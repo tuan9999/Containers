@@ -1,0 +1,6 @@
+#ifndef GH_CONTAINERS_LIBRARY_H
+#define GH_CONTAINERS_LIBRARY_H
+
+void hello();
+
+#endif //GH_CONTAINERS_LIBRARY_H
