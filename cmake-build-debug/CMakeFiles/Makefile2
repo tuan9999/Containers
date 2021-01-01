@@ -73,46 +73,122 @@ CMAKE_BINARY_DIR = /Users/tuanperera/Documents/42/gh_containers/cmake-build-debu
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/gh_containers.dir/all
+all: CMakeFiles/_containers.dir/all
+all: CMakeFiles/containers_test.dir/all
+all: tests/all
 
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall:
+preinstall: tests/preinstall
 
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/gh_containers.dir/clean
+clean: CMakeFiles/_containers.dir/clean
+clean: CMakeFiles/containers_test.dir/clean
+clean: tests/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/gh_containers.dir
+# Directory level rules for directory tests
+
+# Recursive "all" directory target.
+tests/all: tests/CMakeFiles/list_tests.dir/all
+
+.PHONY : tests/all
+
+# Recursive "preinstall" directory target.
+tests/preinstall:
+
+.PHONY : tests/preinstall
+
+# Recursive "clean" directory target.
+tests/clean: tests/CMakeFiles/list_tests.dir/clean
+
+.PHONY : tests/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/_containers.dir
 
 # All Build rule for target.
-CMakeFiles/gh_containers.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gh_containers.dir/build.make CMakeFiles/gh_containers.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gh_containers.dir/build.make CMakeFiles/gh_containers.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target gh_containers"
-.PHONY : CMakeFiles/gh_containers.dir/all
+CMakeFiles/_containers.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/_containers.dir/build.make CMakeFiles/_containers.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/_containers.dir/build.make CMakeFiles/_containers.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target _containers"
+.PHONY : CMakeFiles/_containers.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/gh_containers.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/gh_containers.dir/all
+CMakeFiles/_containers.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/_containers.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/gh_containers.dir/rule
+.PHONY : CMakeFiles/_containers.dir/rule
 
 # Convenience name for target.
-gh_containers: CMakeFiles/gh_containers.dir/rule
+_containers: CMakeFiles/_containers.dir/rule
 
-.PHONY : gh_containers
+.PHONY : _containers
 
 # clean rule for target.
-CMakeFiles/gh_containers.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gh_containers.dir/build.make CMakeFiles/gh_containers.dir/clean
-.PHONY : CMakeFiles/gh_containers.dir/clean
+CMakeFiles/_containers.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/_containers.dir/build.make CMakeFiles/_containers.dir/clean
+.PHONY : CMakeFiles/_containers.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/containers_test.dir
+
+# All Build rule for target.
+CMakeFiles/containers_test.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/containers_test.dir/build.make CMakeFiles/containers_test.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/containers_test.dir/build.make CMakeFiles/containers_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/CMakeFiles --progress-num=4,5 "Built target containers_test"
+.PHONY : CMakeFiles/containers_test.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/containers_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/containers_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/containers_test.dir/rule
+
+# Convenience name for target.
+containers_test: CMakeFiles/containers_test.dir/rule
+
+.PHONY : containers_test
+
+# clean rule for target.
+CMakeFiles/containers_test.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/containers_test.dir/build.make CMakeFiles/containers_test.dir/clean
+.PHONY : CMakeFiles/containers_test.dir/clean
+
+#=============================================================================
+# Target rules for target tests/CMakeFiles/list_tests.dir
+
+# All Build rule for target.
+tests/CMakeFiles/list_tests.dir/all: CMakeFiles/_containers.dir/all
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/list_tests.dir/build.make tests/CMakeFiles/list_tests.dir/depend
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/list_tests.dir/build.make tests/CMakeFiles/list_tests.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/CMakeFiles --progress-num=6,7 "Built target list_tests"
+.PHONY : tests/CMakeFiles/list_tests.dir/all
+
+# Build rule for subdir invocation for target.
+tests/CMakeFiles/list_tests.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/CMakeFiles 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/list_tests.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/CMakeFiles 0
+.PHONY : tests/CMakeFiles/list_tests.dir/rule
+
+# Convenience name for target.
+list_tests: tests/CMakeFiles/list_tests.dir/rule
+
+.PHONY : list_tests
+
+# clean rule for target.
+tests/CMakeFiles/list_tests.dir/clean:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/list_tests.dir/build.make tests/CMakeFiles/list_tests.dir/clean
+.PHONY : tests/CMakeFiles/list_tests.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../list/list.hpp
+memory
+-
+iostream
+-
+
+/Users/tuanperera/Documents/42/gh_containers/library.cpp
+library.h
+/Users/tuanperera/Documents/42/gh_containers/library.h
+iostream
+-
+
+/Users/tuanperera/Documents/42/gh_containers/library.h
+list.hpp
+/Users/tuanperera/Documents/42/gh_containers/list.hpp
+

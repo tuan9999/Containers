@@ -1,6 +1,7 @@
-#ifndef GH_CONTAINERS_LIBRARY_H
-#define GH_CONTAINERS_LIBRARY_H
+#ifndef LIBRARY_H
+#define LIBRARY_H
+#include "list.hpp"
 
 void hello();
 
-#endif //GH_CONTAINERS_LIBRARY_H
+#endif //LIBRARY_H
