@@ -7,19 +7,19 @@
 
 namespace ft {
     template<typename T>
-    class element {
+    class list_element {
         public:
     		// Variables
-            T				data;
-            element<T>		*next;
-            element<T>		*prev;
+            T					data;
+            list_element<T>		*next;
+            list_element<T>		*prev;
 
             // Functions
-            explicit element(const T &init_data) : data(init_data), next(NULL), prev(NULL) { }
-            element(const element &src) : data(src.data), next(src.next), prev(src.prev) { }
-            ~element() { }
+            explicit list_element(const T &init_data = 0) : data(init_data), next(NULL), prev(NULL) { }
+            list_element(const list_element &src) : data(src.data), next(src.next), prev(src.prev) { }
+            ~list_element() { }
 
-            element&    operator=(const element &rhs) {
+            list_element&    operator=(const list_element &rhs) {
                 if (this != rhs) {
                     this->data = rhs.data;
                     this->next = rhs.next;
@@ -28,12 +28,16 @@ namespace ft {
                 return *this;
             }
 
-            bool        operator==(const element &rhs) {
-                return (this->data == rhs.data && this->next == rhs.next && this->prev == rhs.prev);
+            bool        operator==(const list_element &rhs) {
+                return (this->data == rhs.data &&
+                		this->next == rhs.next &&
+                		this->prev == rhs.prev);
             }
 
-            bool        operator!=(const element &rhs) {
-                return (this->data != rhs.data || this->next != rhs.next || this->prev != rhs.prev);
+            bool        operator!=(const list_element &rhs) {
+                return (this->data != rhs.data ||
+                		this->next != rhs.next ||
+                		this->prev != rhs.prev);
             }
     };
 };

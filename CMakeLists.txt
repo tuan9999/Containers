@@ -7,7 +7,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 
 add_executable(containers_test main.cpp)
 
-add_library(_containers STATIC library.cpp library.h list/list.hpp tests/list_tests.cpp list/list_element.h iterators/iterator.h iterators/input_iterator.h iterators/output_iterator.h iterators/forward_iterator.h iterators/bidirectional_iterator.h iterators/random_access_iterator.h)
+add_library(_containers STATIC library.cpp library.h list/list.hpp tests/list_tests.cpp list/list_element.h iterators/iterator.h iterators/input_iterator.h iterators/output_iterator.h iterators/forward_iterator.h iterators/bidirectional_iterator.h iterators/random_access_iterator.h list/list_iterator.h list/reverse_list_iterator.h list/traits.h)
 
 include_directories(list)
 

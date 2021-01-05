@@ -204,6 +204,15 @@
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/list/list_element.h">
 			<Option target="_containers"/>
 		</Unit>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/list/list_iterator.h">
+			<Option target="_containers"/>
+		</Unit>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/list/reverse_list_iterator.h">
+			<Option target="_containers"/>
+		</Unit>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/list/traits.h">
+			<Option target="_containers"/>
+		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/main.cpp">
 			<Option target="containers_test"/>
 		</Unit>

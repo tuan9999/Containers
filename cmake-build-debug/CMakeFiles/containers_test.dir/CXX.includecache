@@ -11,6 +11,28 @@ memory
 -
 iostream
 -
+list_element.h
+../list/list_element.h
+list_iterator.h
+../list/list_iterator.h
+reverse_list_iterator.h
+../list/reverse_list_iterator.h
+traits.h
+../list/traits.h
+
+../list/list_element.h
+
+../list/list_iterator.h
+list_element.h
+../list/list_element.h
+traits.h
+../list/traits.h
+
+../list/reverse_list_iterator.h
+traits.h
+../list/traits.h
+
+../list/traits.h
 
 /Users/tuanperera/Documents/42/gh_containers/library.h
 list.hpp
@@ -19,4 +41,6 @@ list.hpp
 /Users/tuanperera/Documents/42/gh_containers/main.cpp
 library.h
 /Users/tuanperera/Documents/42/gh_containers/library.h
+list
+-
 

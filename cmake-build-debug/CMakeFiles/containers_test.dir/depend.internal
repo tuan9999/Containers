@@ -3,5 +3,9 @@
 
 CMakeFiles/containers_test.dir/main.cpp.o
  ../list/list.hpp
+ ../list/list_element.h
+ ../list/list_iterator.h
+ ../list/reverse_list_iterator.h
+ ../list/traits.h
  /Users/tuanperera/Documents/42/gh_containers/library.h
  /Users/tuanperera/Documents/42/gh_containers/main.cpp
