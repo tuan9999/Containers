@@ -6,5 +6,5 @@ CXX_FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/Ma
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/tuanperera/Documents/42/gh_containers/list 
+CXX_INCLUDES = -I/Users/tuanperera/Documents/42/gh_containers/list -I/Users/tuanperera/Documents/42/gh_containers/vector -I/Users/tuanperera/Documents/42/gh_containers/map 
 

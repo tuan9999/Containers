@@ -6,5 +6,5 @@ CXX_FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/Ma
 
 CXX_DEFINES = -DBOOST_ALL_NO_LIB -DBOOST_UNIT_TEST_FRAMEWORK_DYN_LINK
 
-CXX_INCLUDES = -I/Users/tuanperera/Documents/42/gh_containers/list -isystem /usr/local/include 
+CXX_INCLUDES = -I/Users/tuanperera/Documents/42/gh_containers/list -I/Users/tuanperera/Documents/42/gh_containers/vector -I/Users/tuanperera/Documents/42/gh_containers/map -isystem /usr/local/include 
 

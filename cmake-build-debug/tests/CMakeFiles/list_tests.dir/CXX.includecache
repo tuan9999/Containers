@@ -34,6 +34,20 @@ traits.h
 
 ../list/traits.h
 
+../map/map.h
+
+../vector/random_access_iterator.hpp
+
+../vector/vector.hpp
+memory
+-
+iostream
+-
+traits.h
+../vector/traits.h
+random_access_iterator.hpp
+../vector/random_access_iterator.hpp
+
 /Users/tuanperera/Documents/42/gh_containers/library.cpp
 library.h
 /Users/tuanperera/Documents/42/gh_containers/library.h
@@ -43,6 +57,10 @@ iostream
 /Users/tuanperera/Documents/42/gh_containers/library.h
 list.hpp
 /Users/tuanperera/Documents/42/gh_containers/list.hpp
+vector.hpp
+/Users/tuanperera/Documents/42/gh_containers/vector.hpp
+map.h
+/Users/tuanperera/Documents/42/gh_containers/map.h
 
 /Users/tuanperera/Documents/42/gh_containers/tests/list_tests.cpp
 iostream

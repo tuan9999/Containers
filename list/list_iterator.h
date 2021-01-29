@@ -8,12 +8,15 @@
 # include "traits.h"
 
 namespace ft {
-	template<typename T>
+	template<typename T, typename R, typename P>
 	class list_iterator {
 		public:
 			// Variables
-			list_element<T>	*pos;
-			typedef bidirectional_iterator_tag iterator_category;
+			list_element<T>						*pos;
+
+			typedef P							pointer;
+			typedef R							reference;
+			typedef bidirectional_iterator_tag 	iterator_category;
 
 		public:
 			// Functions
@@ -28,11 +31,11 @@ namespace ft {
 				return *this;
 			}
 
-			T &operator*() {
+			reference operator*() {
 				return pos->data;
 			}
 
-			T *operator->() {
+			pointer operator->() {
 				return &(pos->data);
 			}
 
@@ -46,7 +49,7 @@ namespace ft {
 			}
 
 			list_iterator operator++(int) {
-				list_iterator<T> out(*this);
+				list_iterator<T, R, P> out(*this);
 				pos = pos->next;
 				return out;
 			}
@@ -57,7 +60,7 @@ namespace ft {
 			}
 
 			list_iterator operator--(int) {
-				list_iterator<T> out(*this);
+				list_iterator<T, R, P> out(*this);
 				pos = pos->prev;
 				return out;
 			}

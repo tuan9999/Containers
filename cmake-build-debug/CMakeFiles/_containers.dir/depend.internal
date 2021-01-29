@@ -7,6 +7,9 @@ CMakeFiles/_containers.dir/library.cpp.o
  ../list/list_iterator.h
  ../list/reverse_list_iterator.h
  ../list/traits.h
+ ../map/map.h
+ ../vector/random_access_iterator.hpp
+ ../vector/vector.hpp
  /Users/tuanperera/Documents/42/gh_containers/library.cpp
  /Users/tuanperera/Documents/42/gh_containers/library.h
 CMakeFiles/_containers.dir/tests/list_tests.cpp.o
@@ -15,6 +18,9 @@ CMakeFiles/_containers.dir/tests/list_tests.cpp.o
  ../list/list_iterator.h
  ../list/reverse_list_iterator.h
  ../list/traits.h
+ ../map/map.h
+ ../vector/random_access_iterator.hpp
+ ../vector/vector.hpp
  /Users/tuanperera/Documents/42/gh_containers/library.cpp
  /Users/tuanperera/Documents/42/gh_containers/library.h
  /Users/tuanperera/Documents/42/gh_containers/tests/list_tests.cpp

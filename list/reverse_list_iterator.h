@@ -7,12 +7,15 @@
 # include "traits.h"
 
 namespace ft {
-	template<typename T>
+	template<typename T, typename R, typename P>
 	class reverse_list_iterator {
 	public:
 		// Variables
 		list_element<T>	*pos;
-		typedef bidirectional_iterator_tag iterator_category;
+
+		typedef P							pointer;
+		typedef R							reference;
+		typedef bidirectional_iterator_tag 	iterator_category;
 
 	public:
 		// Functions
@@ -27,11 +30,11 @@ namespace ft {
 			}
 		}
 
-		T &operator*() {
+		reference operator*() {
 			return pos->data;
 		}
 
-		T *operator->() {
+		pointer operator->() {
 			return &(pos->data);
 		}
 
@@ -45,6 +48,7 @@ namespace ft {
 		}
 
 		reverse_list_iterator operator++(int) {
+			reverse_list_iterator<T, R, P> out(*this);
 			pos = pos->prev;
 			return *this;
 		}
@@ -55,6 +59,7 @@ namespace ft {
 		}
 
 		reverse_list_iterator operator--(int) {
+			reverse_list_iterator<T, R, P> out(*this);
 			pos = pos->next;
 			return *this;
 		}
