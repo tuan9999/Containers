@@ -8,6 +8,8 @@ CMakeFiles/containers_test.dir/main.cpp.o
  ../list/reverse_list_iterator.h
  ../list/traits.h
  ../map/map.h
+ ../map/map_node.h
+ ../map/rb_tree.h
  ../vector/random_access_iterator.hpp
  ../vector/vector.hpp
  /Users/tuanperera/Documents/42/gh_containers/library.h

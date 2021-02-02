@@ -35,6 +35,10 @@ traits.h
 ../list/traits.h
 
 ../map/map.h
+map_node.h
+../map/map_node.h
+
+../map/map_node.h
 
 ../vector/random_access_iterator.hpp
 
