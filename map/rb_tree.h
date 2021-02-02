@@ -172,20 +172,23 @@ namespace ft {
 						left_rotate(x->parent); // case 3.1
 						s = x->parent->right; // case 3.1
 					}
-					if (s->left->color == BLACK && s->right->color == BLACK) {
+					if ((s->left && s->left->color == BLACK) && (s->right && s->right->color == BLACK)) {
 						s->color = RED; // case 3.2
 						x = x->parent; //case 3.2
 					}
-					else if (s->right->color == BLACK) {
-						s->left->color = BLACK; // case 3.3
+					else if (s->right && s->right->color == BLACK) {
+						if (s->left)
+							s->left->color = BLACK; // case 3.3
 						s->color = RED; //case 3.3
 						right_rotate(s); // case 3.3
 						s = x->parent->right; // case 3.3
 					}
-					s->color = x->parent->right->color; // case 3.4
-					x->parent->color = BLACK; // case 3.4
-					s->right->color = BLACK; // case 3.4
-					left_rotate(x->parent); // case 3.4
+					else {
+						s->color = x->parent->right->color; // case 3.4
+						x->parent->color = BLACK; // case 3.4
+						s->right->color = BLACK; // case 3.4
+						left_rotate(x->parent); // case 3.4
+					}
 					x = this->root;
 				}
 				else {
@@ -196,20 +199,23 @@ namespace ft {
 						right_rotate(x->parent); // case 3.1
 						s = x->parent->left; // case 3.1
 					}
-					if (s->right->color == BLACK && s->left->color == BLACK) {
+					if ((s->right && s->right->color == BLACK) && (s->left && s->left->color == BLACK)) {
 						s->color = RED; // case 3.2
 						x = x->parent; //case 3.2
 					}
-					else if (s->left->color == BLACK) {
-						s->right->color = BLACK; // case 3.3
+					else if (s->left && s->left->color == BLACK) {
+						if (s->right)
+							s->right->color = BLACK; // case 3.3
 						s->color = RED; //case 3.3
 						left_rotate(s); // case 3.3
 						s = x->parent->left; // case 3.3
 					}
-					s->color = x->parent->left->color; // case 3.4
-					x->parent->color = BLACK; // case 3.4
-					s->left->color = BLACK; // case 3.4
-					right_rotate(x->parent); // case 3.4
+					else {
+						s->color = x->parent->left->color; // case 3.4
+						x->parent->color = BLACK; // case 3.4
+						s->left->color = BLACK; // case 3.4
+						right_rotate(x->parent); // case 3.4
+					}
 					x = this->root;
 				}
 			}
@@ -229,7 +235,16 @@ namespace ft {
 				}
 				else {
 					if (x->right == NULL && x->left == NULL) {
-						delete x;
+						if (x == x->parent->right) {
+							x = x->parent;
+							delete x->right;
+							x->right = NULL;
+						}
+						else {
+							x = x->parent;
+							delete x->left;
+							x->left = NULL;
+						}
 					}
 					else if (x->right && x->left) {
 						node_ptr successor = x->right;
