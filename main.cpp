@@ -26,5 +26,8 @@ int main() {
 	bst.insert_data(std::pair<int, std::string>(65, "wsb"));
 
 	bst.print(bst.get_root(), 1);
+	bst.delete_node(std::pair<int, std::string>(85, "gme"));
+	std::cout << "----" << std::endl;
+	bst.print(bst.get_root(), 1);
 	return (0);
 }

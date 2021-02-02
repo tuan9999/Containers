@@ -162,9 +162,102 @@ namespace ft {
 			check_rb_violation(node);
 		}
 
+		void fix_rb_delete_violation(node_ptr x) {
+			while (x != this->root && x->color == BLACK) {
+				if (x == x->parent->left) {
+					node_ptr s = x->parent->right;
+					if (s->color == RED) {
+						s->color = BLACK; // case 3.1
+						x->parent->color = RED; // case 3.1
+						left_rotate(x->parent); // case 3.1
+						s = x->parent->right; // case 3.1
+					}
+					if (s->left->color == BLACK && s->right->color == BLACK) {
+						s->color = RED; // case 3.2
+						x = x->parent; //case 3.2
+					}
+					else if (s->right->color == BLACK) {
+						s->left->color = BLACK; // case 3.3
+						s->color = RED; //case 3.3
+						right_rotate(s); // case 3.3
+						s = x->parent->right; // case 3.3
+					}
+					s->color = x->parent->right->color; // case 3.4
+					x->parent->color = BLACK; // case 3.4
+					s->right->color = BLACK; // case 3.4
+					left_rotate(x->parent); // case 3.4
+					x = this->root;
+				}
+				else {
+					node_ptr s = x->parent->left;
+					if (s->color == RED) {
+						s->color = BLACK; // case 3.1
+						x->parent->color = RED; // case 3.1
+						right_rotate(x->parent); // case 3.1
+						s = x->parent->left; // case 3.1
+					}
+					if (s->right->color == BLACK && s->left->color == BLACK) {
+						s->color = RED; // case 3.2
+						x = x->parent; //case 3.2
+					}
+					else if (s->left->color == BLACK) {
+						s->right->color = BLACK; // case 3.3
+						s->color = RED; //case 3.3
+						left_rotate(s); // case 3.3
+						s = x->parent->left; // case 3.3
+					}
+					s->color = x->parent->left->color; // case 3.4
+					x->parent->color = BLACK; // case 3.4
+					s->left->color = BLACK; // case 3.4
+					right_rotate(x->parent); // case 3.4
+					x = this->root;
+				}
+			}
+			x->color = BLACK;
+		}
+
 		void delete_node(value_type data) {
+			node_ptr x = this->root;
 			if (this->root == NULL)
 				return ;
+			while (x) {
+				if (x->data.first < data.first) {
+					x = x->right;
+				}
+				else if (x->data.first > data.first) {
+					x = x->left;
+				}
+				else {
+					if (x->right == NULL && x->left == NULL) {
+						delete x;
+					}
+					else if (x->right && x->left) {
+						node_ptr successor = x->right;
+						while (successor->left != NULL)
+							successor = successor->left;
+						x->data = successor->data;
+						x->color = successor->color;
+						successor->parent->left = NULL;
+						delete successor;
+					}
+					else {
+						if (x->right) {
+							x->data = x->right->data;
+							x->color = x->right->color;
+							delete x->right;
+							x->right = NULL;
+						}
+						else {
+							x->data = x->left->data;
+							x->color = x->left->color;
+							delete x->left;
+							x->left = NULL;
+						}
+					}
+					fix_rb_delete_violation(x);
+					return ;
+				}
+			}
 		}
 
 	};
