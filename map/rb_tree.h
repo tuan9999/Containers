@@ -176,20 +176,20 @@ namespace ft {
 						s->color = RED; // case 3.2
 						x = x->parent; //case 3.2
 					}
-					else if (s->right && s->right->color == BLACK) {
-						if (s->left)
-							s->left->color = BLACK; // case 3.3
-						s->color = RED; //case 3.3
-						right_rotate(s); // case 3.3
-						s = x->parent->right; // case 3.3
-					}
 					else {
+						if (s->right && s->right->color == BLACK) {
+							if (s->left)
+								s->left->color = BLACK; // case 3.3
+							s->color = RED; //case 3.3
+							right_rotate(s); // case 3.3
+							s = x->parent->right; // case 3.3
+						}
 						s->color = x->parent->right->color; // case 3.4
 						x->parent->color = BLACK; // case 3.4
 						s->right->color = BLACK; // case 3.4
 						left_rotate(x->parent); // case 3.4
+						x = this->root;
 					}
-					x = this->root;
 				}
 				else {
 					node_ptr s = x->parent->left;
@@ -203,75 +203,93 @@ namespace ft {
 						s->color = RED; // case 3.2
 						x = x->parent; //case 3.2
 					}
-					else if (s->left && s->left->color == BLACK) {
-						if (s->right)
-							s->right->color = BLACK; // case 3.3
-						s->color = RED; //case 3.3
-						left_rotate(s); // case 3.3
-						s = x->parent->left; // case 3.3
-					}
 					else {
+						if (s->left && s->left->color == BLACK) {
+							if (s->right)
+								s->right->color = BLACK; // case 3.3
+							s->color = RED; //case 3.3
+							left_rotate(s); // case 3.3
+							s = x->parent->left; // case 3.3
+						}
 						s->color = x->parent->left->color; // case 3.4
 						x->parent->color = BLACK; // case 3.4
 						s->left->color = BLACK; // case 3.4
 						right_rotate(x->parent); // case 3.4
+						x = this->root;
 					}
-					x = this->root;
 				}
 			}
 			x->color = BLACK;
 		}
 
+		node_ptr minimum(node_ptr x) {
+			while (x->left != NULL) {
+				x = x->left;
+			}
+			return x;
+		}
+
+		void rb_transplant(node_ptr u, node_ptr v){
+			if (u->parent == NULL) {
+				root = v;
+			} else if (u == u->parent->left){
+				u->parent->left = v;
+			} else {
+				u->parent->right = v;
+			}
+			v->parent = u->parent;
+		}
+
 		void delete_node(value_type data) {
-			node_ptr x = this->root;
-			if (this->root == NULL)
-				return ;
-			while (x) {
-				if (x->data.first < data.first) {
-					x = x->right;
+			node_ptr z = NULL;
+			node_ptr x, y, node = this->root;
+			while (node != NULL){
+				if (node->data.first == data.first) {
+					z = node;
 				}
-				else if (x->data.first > data.first) {
-					x = x->left;
+
+				if (node->data.first <= data.first) {
+					node = node->right;
+				} else {
+					node = node->left;
 				}
-				else {
-					if (x->right == NULL && x->left == NULL) {
-						if (x == x->parent->right) {
-							x = x->parent;
-							delete x->right;
-							x->right = NULL;
-						}
-						else {
-							x = x->parent;
-							delete x->left;
-							x->left = NULL;
-						}
-					}
-					else if (x->right && x->left) {
-						node_ptr successor = x->right;
-						while (successor->left != NULL)
-							successor = successor->left;
-						x->data = successor->data;
-						x->color = successor->color;
-						successor->parent->left = NULL;
-						delete successor;
-					}
-					else {
-						if (x->right) {
-							x->data = x->right->data;
-							x->color = x->right->color;
-							delete x->right;
-							x->right = NULL;
-						}
-						else {
-							x->data = x->left->data;
-							x->color = x->left->color;
-							delete x->left;
-							x->left = NULL;
-						}
-					}
-					fix_rb_delete_violation(x);
-					return ;
+			}
+
+			if (z == NULL) {
+				std::cout << "Couldn't find key in the tree" << std::endl;
+				return;
+			}
+
+			y = z;
+			int y_original_color = y->color;
+			if (z->left == NULL) {
+				x = z;
+				rb_transplant(z->parent, z);
+			} else if (z->right == NULL) {
+				x = z;
+				rb_transplant(z->parent, z);
+			} else {
+				y = minimum(z->right);
+				y = y->parent;
+				y_original_color = y->color;
+				x = y->right;
+				if (y->parent == z) {
+					x->parent = y;
+				} else {
+					rb_transplant(y, y->right);
+					y->right = z->right;
+					y->right->parent = y;
 				}
+
+
+				rb_transplant(z, y);
+				y->left = z->left;
+				y->left->parent = y;
+				y->color = z->color;
+			}
+			delete z;
+			if (y_original_color == BLACK){
+				fix_rb_delete_violation(x);
 			}
 		}
 
