@@ -230,14 +230,9 @@ namespace ft {
 		}
 
 		void rb_transplant(node_ptr u, node_ptr v){
-			if (u->parent == NULL) {
-				root = v;
-			} else if (u == u->parent->left){
-				u->parent->left = v;
-			} else {
-				u->parent->right = v;
-			}
-			v->parent = u->parent;
+			value_type tmp = u->data;
+			u->data = v->data;
+			v->data = tmp;
 		}
 
 		void delete_node(value_type data) {
@@ -255,39 +250,50 @@ namespace ft {
 				}
 			}
 
-			if (z == NULL) {
-				std::cout << "Couldn't find key in the tree" << std::endl;
-				return;
-			}
+			if (z == NULL)
+				throw std::out_of_range("Couldn't find key in the tree");
 
 			y = z;
 			int y_original_color = y->color;
-			if (z->left == NULL) {
-				x = z;
-				rb_transplant(z->parent, z);
-			} else if (z->right == NULL) {
-				x = z;
-				rb_transplant(z->parent, z);
+			std::cout << z->data.first << std::endl;
+			if (z->left == NULL && z->right == NULL) {
+				x = z->parent;
+				if (x->left == z) {
+					x->left = NULL;
+				}
+				else {
+					x->right = NULL;
+				}
+			} else if (z->right == NULL && z->left) {
+				if (z->parent->right == z) {
+					z->parent->right = z->left;
+				}
+				else {
+					z->parent->left = z->left;
+				}
+				z->left->parent = z->parent;
+			} else if (z->right && z->left == NULL) {
+				if (z->parent->right == z) {
+					z->parent->right = z->right;
+				}
+				else {
+					z->parent->left = z->right;
+				}
+				z->right->parent = z->parent;
 			} else {
 				y = minimum(z->right);
-				y = y->parent;
-				y_original_color = y->color;
-				x = y->right;
-				if (y->parent == z) {
-					x->parent = y;
-				} else {
-					rb_transplant(y, y->right);
-					y->right = z->right;
-					y->right->parent = y;
-				}
-
-
 				rb_transplant(z, y);
-				y->left = z->left;
-				y->left->parent = y;
-				y->color = z->color;
+				x = z;
+				z = y;
+				if (y == y->parent->right) {
+					y->parent->right = NULL;
+				}
+				else {
+					y->parent->left = NULL;
+				}
 			}
 			delete z;
+			std::cout << "Hello " << std::endl;
 			if (y_original_color == BLACK){
 				fix_rb_delete_violation(x);
 			}
