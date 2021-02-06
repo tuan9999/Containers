@@ -35,10 +35,18 @@ traits.h
 ../list/traits.h
 
 ../map/map.h
+rb_tree.h
+../map/rb_tree.h
+../utils/bidirectional_iterator.h
+../utils/bidirectional_iterator.h
+
+../map/map_node.h
+
+../map/rb_tree.h
 map_node.h
 ../map/map_node.h
 
-../map/map_node.h
+../utils/bidirectional_iterator.h
 
 ../vector/random_access_iterator.hpp
 

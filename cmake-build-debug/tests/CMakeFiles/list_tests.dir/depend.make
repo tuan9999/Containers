@@ -8,6 +8,8 @@ tests/CMakeFiles/list_tests.dir/list_tests.cpp.o: ../list/reverse_list_iterator.
 tests/CMakeFiles/list_tests.dir/list_tests.cpp.o: ../list/traits.h
 tests/CMakeFiles/list_tests.dir/list_tests.cpp.o: ../map/map.h
 tests/CMakeFiles/list_tests.dir/list_tests.cpp.o: ../map/map_node.h
+tests/CMakeFiles/list_tests.dir/list_tests.cpp.o: ../map/rb_tree.h
+tests/CMakeFiles/list_tests.dir/list_tests.cpp.o: ../utils/bidirectional_iterator.h
 tests/CMakeFiles/list_tests.dir/list_tests.cpp.o: ../vector/random_access_iterator.hpp
 tests/CMakeFiles/list_tests.dir/list_tests.cpp.o: ../vector/vector.hpp
 tests/CMakeFiles/list_tests.dir/list_tests.cpp.o: ../library.cpp

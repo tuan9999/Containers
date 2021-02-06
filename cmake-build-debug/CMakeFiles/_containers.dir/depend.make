@@ -8,6 +8,8 @@ CMakeFiles/_containers.dir/library.cpp.o: ../list/reverse_list_iterator.h
 CMakeFiles/_containers.dir/library.cpp.o: ../list/traits.h
 CMakeFiles/_containers.dir/library.cpp.o: ../map/map.h
 CMakeFiles/_containers.dir/library.cpp.o: ../map/map_node.h
+CMakeFiles/_containers.dir/library.cpp.o: ../map/rb_tree.h
+CMakeFiles/_containers.dir/library.cpp.o: ../utils/bidirectional_iterator.h
 CMakeFiles/_containers.dir/library.cpp.o: ../vector/random_access_iterator.hpp
 CMakeFiles/_containers.dir/library.cpp.o: ../vector/vector.hpp
 CMakeFiles/_containers.dir/library.cpp.o: ../library.cpp
@@ -20,6 +22,8 @@ CMakeFiles/_containers.dir/tests/list_tests.cpp.o: ../list/reverse_list_iterator
 CMakeFiles/_containers.dir/tests/list_tests.cpp.o: ../list/traits.h
 CMakeFiles/_containers.dir/tests/list_tests.cpp.o: ../map/map.h
 CMakeFiles/_containers.dir/tests/list_tests.cpp.o: ../map/map_node.h
+CMakeFiles/_containers.dir/tests/list_tests.cpp.o: ../map/rb_tree.h
+CMakeFiles/_containers.dir/tests/list_tests.cpp.o: ../utils/bidirectional_iterator.h
 CMakeFiles/_containers.dir/tests/list_tests.cpp.o: ../vector/random_access_iterator.hpp
 CMakeFiles/_containers.dir/tests/list_tests.cpp.o: ../vector/vector.hpp
 CMakeFiles/_containers.dir/tests/list_tests.cpp.o: ../library.cpp

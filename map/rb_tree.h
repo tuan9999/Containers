@@ -32,6 +32,24 @@ namespace ft {
 			return this->root;
 		}
 
+		node_ptr min_val() {
+			node_ptr node = this->root;
+			if (node) {
+				while (node->left)
+					node = node->left;
+			}
+			return node;
+		}
+
+		node_ptr max_val() {
+			node_ptr node = this->root;
+			if (node) {
+				while (node->right)
+					node = node->right;
+			}
+			return node;
+		}
+
 		void left_rotate(node_ptr x) {
 			node_ptr y = x->right;
 			x->right = y->left;
@@ -89,24 +107,20 @@ namespace ft {
 			}
 		}
 
-		void recolor(node_ptr node) {
-			node->color = (node->color == BLACK) ? RED : BLACK;
-		}
-
 		void check_rb_violation(node_ptr node) {
 			if (node->parent->color == BLACK)
 				return ;
 			else {
 				while (node->parent && node->parent->color == RED) {
 					if (node->parent == node->parent->parent->right) {
-						node_ptr u = node->parent->parent->left; //uncle
-						if (u->color == RED) {// case 3.1
+						node_ptr u = node->parent->parent->left;
+						if (u->color == RED) {
 							u->color = BLACK;
 							node->parent->color = BLACK;
 							node->parent->parent->color = RED;
 							node = node->parent->parent;
 						}
-						else if (node == node->parent->left) { // case 3.3.1 and 3.3.2
+						else if (node == node->parent->left) {
 							node = node->parent;
 							left_rotate(node);
 							node->parent->color = BLACK;
@@ -115,14 +129,14 @@ namespace ft {
 						}
 					}
 					else if (node->parent == node->parent->parent->left) {
-						node_ptr u = node->parent->parent->right; //uncle
-						if (u->color == RED) {// case 3.1
+						node_ptr u = node->parent->parent->right;
+						if (u->color == RED) {
 							u->color = BLACK;
 							node->parent->color = BLACK;
 							node->parent->parent->color = RED;
 							node = node->parent->parent;
 						}
-						else if (node == node->parent->right) { // case 3.3.1 and 3.3.2
+						else if (node == node->parent->right) {
 							node = node->parent;
 							right_rotate(node);
 							node->parent->color = BLACK;
@@ -147,6 +161,10 @@ namespace ft {
 				node_ptr y = NULL;
 				while (x) {
 					y = x;
+					if (x->data.first == node->data.first) {
+						std::cout << "Cannot add duplicate key" << std::endl;
+						return ;
+					}
 					if (x->data.first > node->data.first)
 						x = x->left;
 					else
@@ -167,54 +185,54 @@ namespace ft {
 				if (x == x->parent->left) {
 					node_ptr s = x->parent->right;
 					if (s->color == RED) {
-						s->color = BLACK; // case 3.1
-						x->parent->color = RED; // case 3.1
-						left_rotate(x->parent); // case 3.1
-						s = x->parent->right; // case 3.1
+						s->color = BLACK;
+						x->parent->color = RED;
+						left_rotate(x->parent);
+						s = x->parent->right;
 					}
 					if ((s->left && s->left->color == BLACK) && (s->right && s->right->color == BLACK)) {
-						s->color = RED; // case 3.2
-						x = x->parent; //case 3.2
+						s->color = RED;
+						x = x->parent;
 					}
 					else {
 						if (s->right && s->right->color == BLACK) {
 							if (s->left)
-								s->left->color = BLACK; // case 3.3
+								s->left->color = BLACK;
 							s->color = RED; //case 3.3
-							right_rotate(s); // case 3.3
-							s = x->parent->right; // case 3.3
+							right_rotate(s);
+							s = x->parent->right;
 						}
-						s->color = x->parent->right->color; // case 3.4
-						x->parent->color = BLACK; // case 3.4
-						s->right->color = BLACK; // case 3.4
-						left_rotate(x->parent); // case 3.4
+						s->color = x->parent->right->color;
+						x->parent->color = BLACK;
+						s->right->color = BLACK;
+						left_rotate(x->parent);
 						x = this->root;
 					}
 				}
 				else {
 					node_ptr s = x->parent->left;
 					if (s->color == RED) {
-						s->color = BLACK; // case 3.1
-						x->parent->color = RED; // case 3.1
-						right_rotate(x->parent); // case 3.1
-						s = x->parent->left; // case 3.1
+						s->color = BLACK;
+						x->parent->color = RED;
+						right_rotate(x->parent);
+						s = x->parent->left;
 					}
 					if ((s->right && s->right->color == BLACK) && (s->left && s->left->color == BLACK)) {
-						s->color = RED; // case 3.2
-						x = x->parent; //case 3.2
+						s->color = RED;
+						x = x->parent;
 					}
 					else {
 						if (s->left && s->left->color == BLACK) {
 							if (s->right)
-								s->right->color = BLACK; // case 3.3
-							s->color = RED; //case 3.3
-							left_rotate(s); // case 3.3
-							s = x->parent->left; // case 3.3
+								s->right->color = BLACK;
+							s->color = RED;
+							left_rotate(s);
+							s = x->parent->left;
 						}
-						s->color = x->parent->left->color; // case 3.4
-						x->parent->color = BLACK; // case 3.4
-						s->left->color = BLACK; // case 3.4
-						right_rotate(x->parent); // case 3.4
+						s->color = x->parent->left->color;
+						x->parent->color = BLACK;
+						s->left->color = BLACK;
+						right_rotate(x->parent);
 						x = this->root;
 					}
 				}
@@ -250,12 +268,14 @@ namespace ft {
 				}
 			}
 
-			if (z == NULL)
-				throw std::out_of_range("Couldn't find key in the tree");
+			if (z == NULL) {
+				std::cout << "Couldn't find key in the tree" << std::endl;
+				return;
+			}
 
 			y = z;
 			int y_original_color = y->color;
-			std::cout << z->data.first << std::endl;
+			std::cout << y->data.first << " " << y_original_color << std::endl;
 			if (z->left == NULL && z->right == NULL) {
 				x = z->parent;
 				if (x->left == z) {
@@ -265,6 +285,7 @@ namespace ft {
 					x->right = NULL;
 				}
 			} else if (z->right == NULL && z->left) {
+				x = z->left;
 				if (z->parent->right == z) {
 					z->parent->right = z->left;
 				}
@@ -273,6 +294,7 @@ namespace ft {
 				}
 				z->left->parent = z->parent;
 			} else if (z->right && z->left == NULL) {
+				x = z->right;
 				if (z->parent->right == z) {
 					z->parent->right = z->right;
 				}
@@ -282,8 +304,11 @@ namespace ft {
 				z->right->parent = z->parent;
 			} else {
 				y = minimum(z->right);
+				if (z == this->root)
+					x = z;
+				else
+					x = z->parent;
 				rb_transplant(z, y);
-				x = z;
 				z = y;
 				if (y == y->parent->right) {
 					y->parent->right = NULL;

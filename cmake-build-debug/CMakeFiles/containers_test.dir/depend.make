@@ -9,6 +9,7 @@ CMakeFiles/containers_test.dir/main.cpp.o: ../list/traits.h
 CMakeFiles/containers_test.dir/main.cpp.o: ../map/map.h
 CMakeFiles/containers_test.dir/main.cpp.o: ../map/map_node.h
 CMakeFiles/containers_test.dir/main.cpp.o: ../map/rb_tree.h
+CMakeFiles/containers_test.dir/main.cpp.o: ../utils/bidirectional_iterator.h
 CMakeFiles/containers_test.dir/main.cpp.o: ../vector/random_access_iterator.hpp
 CMakeFiles/containers_test.dir/main.cpp.o: ../vector/vector.hpp
 CMakeFiles/containers_test.dir/main.cpp.o: ../library.h

@@ -50,6 +50,41 @@ namespace ft {
 			this->color = rhs.color;
 			return (*this);
 		}
+
+		node_ptr minimum(node_ptr node) {
+			while (node->left != NULL) {
+				node = node->left;
+			}
+			return node;
+		}
+
+		node_ptr maximum(node_ptr node) {
+			while (node->right != NULL) {
+				node = node->right;
+			}
+			return node;
+		}
+
+		node_ptr inorder_pred_parent(node_ptr node) {
+			while (node != this->parent->right)
+				node = this->parent;
+			return node->parent;
+		}
+
+		node_ptr next() {
+			if (this->right) {
+				return minimum(this->right);
+			}
+			else
+				return this->parent;
+		}
+
+		node_ptr prev() {
+			if (this->left)
+				return maximum(this->left);
+			else
+				return inorder_pred_parent(this);
+		}
 	};
 }
 

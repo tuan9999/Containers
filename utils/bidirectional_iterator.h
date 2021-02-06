@@ -7,24 +7,26 @@
 
 namespace ft {
 	template<typename T, typename R, typename P, typename N>
-	class list_iterator {
+	class bidirectional_iterator {
 	public:
 		// Variables
-		N 			pos;
-
-		typedef P pointer;
-		typedef R reference;
+		typedef T	value_type;
+		typedef R	reference;
+		typedef P 	pointer;
+		typedef N 	node_pointer;
 		typedef bidirectional_iterator_tag iterator_category;
+
+		node_pointer pos;
 
 	public:
 		// Functions
-		list_iterator(list_element <T> *p = 0) : pos(p) {}
+		bidirectional_iterator(node_pointer p = 0) : pos(p) {}
 
-		list_iterator(const list_iterator &src) : pos(src.pos) {}
+		bidirectional_iterator(const bidirectional_iterator &src) : pos(src.pos) {}
 
-		~list_iterator() {}
+		~bidirectional_iterator() {}
 
-		list_iterator &operator=(const list_iterator &rhs) {
+		bidirectional_iterator &operator=(const bidirectional_iterator &rhs) {
 			if (*this != rhs) {
 				this->pos = rhs.pos;
 			}
@@ -39,54 +41,56 @@ namespace ft {
 			return &(pos->data);
 		}
 
-		bool operator!=(const list_iterator &rhs) {
+		bool operator!=(const bidirectional_iterator &rhs) {
 			return this->pos != rhs.pos;
 		}
 
-		list_iterator operator++() {
-			pos = pos->get_next();
+		bidirectional_iterator operator++() {
+			pos = pos->next();
 			return *this;
 		}
 
-		list_iterator operator++(int) {
-			list_iterator<T, R, P, N> out(*this);
-			pos = pos->get_next();
+		bidirectional_iterator operator++(int) {
+			bidirectional_iterator<T, R, P, N> out(*this);
+			pos = pos->next();
 			return out;
 		}
 
-		list_iterator operator--() {
-			pos = pos->get_prev();
+		bidirectional_iterator operator--() {
+			pos = pos->prev();
 			return *this;
 		}
 
-		list_iterator operator--(int) {
-			list_iterator<T, R, P, N> out(*this);
-			pos = pos->get_prev();
+		bidirectional_iterator operator--(int) {
+			bidirectional_iterator<T, R, P, N> out(*this);
+			pos = pos->prev();
 			return out;
 		}
-	}
+	};
 
 	template<typename T, typename R, typename P, typename N>
-	class reverse_list_iterator {
+	class reverse_bidirectional_iterator {
 	public:
 		// Variables
-		N 			pos;
-
-		typedef P pointer;
-		typedef R reference;
+		typedef T	value_type;
+		typedef R	reference;
+		typedef P 	pointer;
+		typedef N 	node_pointer;
 		typedef bidirectional_iterator_tag iterator_category;
+
+		node_pointer pos;
 
 	public:
 		// Functions
-		reverse_list_iterator() : pos(NULL) {}
+		reverse_bidirectional_iterator() : pos(NULL) {}
 
-		reverse_list_iterator(list_element <T> *p = 0) : pos(p) {}
+		reverse_bidirectional_iterator(node_pointer p = 0) : pos(p) {}
 
-		reverse_list_iterator(const reverse_list_iterator &src) : pos(src.pos) {}
+		reverse_bidirectional_iterator(const reverse_bidirectional_iterator &src) : pos(src.pos) {}
 
-		~reverse_list_iterator() {}
+		~reverse_bidirectional_iterator() {}
 
-		reverse_list_iterator &operator=(const reverse_list_iterator &rhs) {
+		reverse_bidirectional_iterator &operator=(const reverse_bidirectional_iterator &rhs) {
 			if (this != rhs) {
 				this->pos = rhs.pos;
 			}
@@ -100,32 +104,32 @@ namespace ft {
 			return &(pos->data);
 		}
 
-		bool operator!=(const reverse_list_iterator &rhs) {
+		bool operator!=(const reverse_bidirectional_iterator &rhs) {
 			return this->pos != rhs.pos;
 		}
 
-		reverse_list_iterator operator++() {
-			pos = pos->get_prev();
+		reverse_bidirectional_iterator operator++() {
+			pos = pos->prev();
 			return *this;
 		}
 
-		reverse_list_iterator operator++(int) {
-			reverse_list_iterator<T, R, P, N> out(*this);
-			pos = pos->get_prev();
+		reverse_bidirectional_iterator operator++(int) {
+			reverse_bidirectional_iterator<T, R, P, N> out(*this);
+			pos = pos->prev();
 			return *this;
 		}
 
-		reverse_list_iterator operator--() {
-			pos = pos->get_next();
+		reverse_bidirectional_iterator operator--() {
+			pos = pos->next();
 			return *this;
 		}
 
-		reverse_list_iterator operator--(int) {
-			reverse_list_iterator<T, R, P, N> out(*this);
-			pos = pos->get_next();
+		reverse_bidirectional_iterator operator--(int) {
+			reverse_bidirectional_iterator<T, R, P, N> out(*this);
+			pos = pos->next();
 			return *this;
 		}
-	}
+	};
 }
 
 #endif //BIDIRECTIONAL_ITERATOR_H
