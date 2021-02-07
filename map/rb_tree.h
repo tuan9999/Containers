@@ -212,10 +212,7 @@ namespace ft {
 			check_rb_violation(node);
 		}
 
-		void fix_rb_delete_violation(node_ptr x, bool check) {
-			node_ptr z = NULL;
-			if (check == true)
-				z = x;
+		void fix_rb_delete_violation(node_ptr x) {
 			while (x != this->root && x->color == BLACK) {
 				if (x == x->parent->left) {
 					node_ptr s = x->parent->right;
@@ -276,14 +273,6 @@ namespace ft {
 				}
 			}
 			x->color = BLACK;
-			if (z && z == z->parent->right) {
-				z->parent->right = NULL;
-				delete z;
-			}
-			else if (z) {
-				z->parent->left = NULL;
-				delete z;
-			}
 		}
 
 		node_ptr minimum(node_ptr x) {
@@ -295,7 +284,7 @@ namespace ft {
 
 		void rb_transplant(node_ptr u, node_ptr v){
 			if (u->parent == NULL) {
-				root = v;
+				this->root = v;
 			} else if (u == u->parent->left){
 				u->parent->left = v;
 			} else {
@@ -327,7 +316,6 @@ namespace ft {
 
 			y = z;
 			int y_original_color = y->color;
-			bool check = false;
 			if (z->left->data == NULL) {
 				x = z->right;
 				rb_transplant(z, z->right);
@@ -353,7 +341,7 @@ namespace ft {
 			}
 			delete z;
 			if (y_original_color == BLACK){
-				fix_rb_delete_violation(x, check);
+				fix_rb_delete_violation(x);
 			}
 		}
 

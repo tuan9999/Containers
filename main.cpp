@@ -48,6 +48,24 @@ int main() {
 	bst.delete_node(std::pair<int, std::string>(76, "wsb"));
 	std::cout << "----" << std::endl;
 	bst.print(bst.get_root(), 1);
+	bst.delete_node(std::pair<int, std::string>(65, "wsb"));
+	std::cout << "----" << std::endl;
+	bst.print(bst.get_root(), 1);
+	bst.delete_node(std::pair<int, std::string>(90, "wsb"));
+	std::cout << "----" << std::endl;
+	bst.print(bst.get_root(), 1);
+	bst.delete_node(std::pair<int, std::string>(20, "wsb"));
+	std::cout << "----" << std::endl;
+	bst.print(bst.get_root(), 1);
+	bst.delete_node(std::pair<int, std::string>(93, "wsb"));
+	std::cout << "----" << std::endl;
+	bst.print(bst.get_root(), 1);
+	bst.delete_node(std::pair<int, std::string>(71, "wsb"));
+	std::cout << "----" << std::endl;
+	bst.print(bst.get_root(), 1);
+	bst.delete_node(std::pair<int, std::string>(52, "wsb"));
+	std::cout << "----" << std::endl;
+	bst.print(bst.get_root(), 1);
 
 	return (0);
 }
