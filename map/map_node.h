@@ -23,15 +23,23 @@ namespace ft {
 		rb_tree_node<T> *right;
 		// 1 for black, 0 for red
 		int				color;
-		value_type 		data;
+		value_type 		*data;
 
 	public:
-		rb_tree_node(const T v, int color = BLACK) :
+		rb_tree_node() :
+				parent(NULL),
+				left(NULL),
+				right(NULL),
+				color(BLACK),
+				data(NULL) {}
+
+		rb_tree_node(value_type *v, int color = BLACK) :
 				parent(NULL),
 				left(NULL),
 				right(NULL),
 				color(color),
 				data(v) {}
+
 		rb_tree_node(const rb_tree_node &src) :
 									parent(src.parent),
 									left(src.left),

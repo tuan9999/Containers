@@ -42,9 +42,9 @@ namespace ft {
 			}
 		};
 
-		typedef ft::rb_tree<value_type> bst;
-		typedef ft::rb_tree_node<value_type> *node_pointer;
-		typedef const ft::rb_tree_node<value_type> *const_node_pointer;
+		typedef ft::rb_tree<Key, T, value_type> 	bst;
+		typedef ft::rb_tree_node<value_type> 		*node_pointer;
+		typedef const ft::rb_tree_node<value_type> 	*const_node_pointer;
 
 	private:
 		bst			tree;
@@ -129,6 +129,14 @@ namespace ft {
 			return (size_type(-1) / sizeof(node_pointer));
 		}
 
+		mapped_type& operator[] (const key_type& k) {
+			if (this->tree.find(k) == NULL) {
+				this->tree.insert_data(std::pair<key_type, mapped_type>(k, 0));
+				this->t_size++;
+			}
+			return this->tree.find(k)->data.second;
+		}
+
 		std::pair<iterator,bool> insert (const value_type& val) {
 
 		}
@@ -155,7 +163,11 @@ namespace ft {
 		}
 
 		void swap (map& x) {
-
+			if (*this != x) {
+				bst tmp = this->tree;
+				this->tree = x.tree;
+				x.tree = tmp;
+			}
 		}
 
 		void clear() { // this probs doesnt work
