@@ -328,7 +328,6 @@ namespace ft {
 			y = z;
 			int y_original_color = y->color;
 			bool check = false;
-			std::cout << y->data->first << " " << y_original_color << std::endl;
 			if (z->left->data == NULL) {
 				x = z->right;
 				rb_transplant(z, z->right);
@@ -352,7 +351,6 @@ namespace ft {
 				y->left->parent = y;
 				y->color = z->color;
 			}
-			std::cout << "HJola" << std::endl;
 			delete z;
 			if (y_original_color == BLACK){
 				fix_rb_delete_violation(x, check);
