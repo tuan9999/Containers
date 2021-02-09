@@ -6,32 +6,6 @@
 
 #IncludeRegexTransform: 
 
-../list/list.hpp
-memory
--
-iostream
--
-list_element.h
-../list/list_element.h
-list_iterator.h
-../list/list_iterator.h
-reverse_list_iterator.h
-../list/reverse_list_iterator.h
-traits.h
-../list/traits.h
-
-../list/list_element.h
-
-../list/list_iterator.h
-list_element.h
-../list/list_element.h
-traits.h
-../list/traits.h
-
-../list/reverse_list_iterator.h
-traits.h
-../list/traits.h
-
 ../list/traits.h
 
 ../map/map.h
@@ -41,30 +15,20 @@ rb_tree.h
 ../utils/bidirectional_iterator.h
 
 ../map/map_node.h
+stddef.h
+-
 
 ../map/rb_tree.h
+iostream
+-
 map_node.h
 ../map/map_node.h
 
 ../utils/bidirectional_iterator.h
-
-../vector/random_access_iterator.hpp
-
-../vector/vector.hpp
-memory
--
-iostream
--
 traits.h
-../vector/traits.h
-random_access_iterator.hpp
-../vector/random_access_iterator.hpp
+../utils/traits.h
 
 /Users/tuanperera/Documents/42/gh_containers/library.h
-list.hpp
-/Users/tuanperera/Documents/42/gh_containers/list.hpp
-vector.hpp
-/Users/tuanperera/Documents/42/gh_containers/vector.hpp
 map.h
 /Users/tuanperera/Documents/42/gh_containers/map.h
 

@@ -4,6 +4,7 @@
 
 #ifndef BIDIRECTIONAL_ITERATOR_H
 #define BIDIRECTIONAL_ITERATOR_H
+#include "traits.h"
 
 namespace ft {
 	template<typename T, typename R, typename P, typename N>

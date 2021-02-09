@@ -4,6 +4,7 @@
 
 #ifndef CONTAINERS_MAP_NODE_H
 #define CONTAINERS_MAP_NODE_H
+#include <stddef.h>
 #define RED		0
 #define BLACK	1
 
@@ -33,7 +34,7 @@ namespace ft {
 				color(BLACK),
 				data(NULL) {}
 
-		rb_tree_node(value_type *v, int color = BLACK) :
+		rb_tree_node(value_type* v, int color = BLACK) :
 				parent(NULL),
 				left(NULL),
 				right(NULL),

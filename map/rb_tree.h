@@ -4,6 +4,7 @@
 
 #ifndef CONTAINERS_RB_TREE_H
 #define CONTAINERS_RB_TREE_H
+#include <iostream>
 #include "map_node.h"
 
 namespace ft {
@@ -26,11 +27,34 @@ namespace ft {
 
 		rb_tree(const rb_tree &src) : root(src.root) {}
 
-		self_type &operator=(const self_type &rhs) {
-			this->root = rhs.root;
+		~rb_tree() {
+			node_ptr n = this->root;
+
+			while(n) {
+				while (n->left->data)
+					n = n->left;
+				while (n->right->data)
+					n = n->right;
+				if (n->left)
+					delete n->left;
+				if (n->right)
+					delete n->right;
+				if (!n->left && !n->right && n->parent != this->root)
+					n = n->parent;
+				if (n == this->root) {
+					delete n;
+					this->root = NULL;
+					return ;
+				}
+			}
 		}
 
-		node_ptr get_root() {
+		self_type &operator=(const self_type &rhs) {
+			this->root = rhs.root;
+			return *this;
+		}
+
+		node_ptr& get_root() {
 			return this->root;
 		}
 
@@ -54,11 +78,15 @@ namespace ft {
 
 		node_ptr find(key_type k) {
 			node_ptr n = this->root;
-			if (k == n->data->first)
+			if (n == NULL)
+				return NULL;
+			else if (k == n->data->first)
 				return n;
 			else {
 				while (n) {
-					if (k > n->data->first)
+					if (n->data == NULL)
+						return NULL;
+					else if (k > n->data->first)
 						n = n->right;
 					else if (k < n->data->first)
 						n = n->left;
@@ -128,8 +156,9 @@ namespace ft {
 		}
 
 		void check_rb_violation(node_ptr node) {
-			if (node->parent->color == BLACK)
+			if (node == this->root || node->parent->color == BLACK) {
 				return ;
+			}
 			else {
 				while (node->parent && node->parent->color == RED) {
 					if (node->parent == node->parent->parent->right) {
@@ -169,12 +198,11 @@ namespace ft {
 			}
 		}
 
-		void insert_data(value_type data) {
-			node_ptr node = new rb_tree_node<T>(&data, 0);
+		node_ptr insert_data(value_type data) {
+			node_ptr node = new rb_tree_node<T>(&data, RED);
 			if (this->root == NULL) {
 				this->root = node;
-				node->color = 1;
-				return ;
+				node->color = BLACK;
 			}
 			else {
 				node_ptr x = this->root;
@@ -182,8 +210,10 @@ namespace ft {
 				while (x && x->data) {
 					y = x;
 					if (x->data->first == node->data->first) {
+						std::cout << x->data->first << " " << node->data->first << std::endl;
 						std::cout << "Cannot add duplicate key" << std::endl;
-						return ;
+						delete node;
+						return x;
 					}
 					if (x->data->first > node->data->first) {
 						x = x->left;
@@ -210,6 +240,7 @@ namespace ft {
 			node->right->parent = node;
 			node->left->parent = node;
 			check_rb_violation(node);
+			return (node);
 		}
 
 		void fix_rb_delete_violation(node_ptr x) {

@@ -19,6 +19,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../list"
   "../vector"
   "../map"
+  "../utils"
   "/usr/local/include"
   )
 
