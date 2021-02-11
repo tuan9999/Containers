@@ -70,13 +70,21 @@ void testtree() {
 
 int main() {
 
-	ft::map<int, std::string> m;
-	std::pair<int, std::string> v = std::pair<int, std::string>(1, "uno");
-	m.insert(v);
-	v = std::pair<int, std::string>(15, "lol");
-	m.insert(v);
-	m.print();
+//	ft::map<int, std::string> m;
+//	std::pair<int, std::string> v = std::pair<int, std::string>(1, "uno");
+//	m.insert(v);
+//	v = std::pair<int, std::string>(15, "lol");
+//	m.insert(v);
+//	m.print();
+	ft::queue<int> q;
 
+	q.push(10);
 
+	q.push(15);
+	q.push(20);
+
+	std::cout << q.front() << q.back() << std::endl;
+	q.pop();
+	std::cout << q.front() << q.back() << std::endl;
 	return (0);
 }

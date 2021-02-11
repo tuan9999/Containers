@@ -26,6 +26,7 @@ namespace ft {
 			list_element<T>							*_head;
 			list_element<T>							*_tail;
 			size_t 									_size;
+			Allocator								allocator;
 
 		public:
 			typedef T								value_type;
@@ -49,6 +50,7 @@ namespace ft {
 				this->_head->next = this->_tail;
 				this->_tail->prev = this->_head;
 				this->_size = 0;
+				this->allocator = alloc;
 			}
 
 			explicit list (size_t n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()) {
@@ -58,6 +60,7 @@ namespace ft {
 				this->_tail->prev = this->_head;
 				this->_size = 0;
 				this->insert(this->end(), n, val);
+				this->allocator = alloc;
 			}
 
 			template <class InputIterator>
@@ -68,6 +71,7 @@ namespace ft {
 				this->_head->next = this->_tail;
 				this->_tail->prev = this->_head;
 				this->_size = 0;
+				this->allocator = alloc;
 				InputIterator tmp = first;
 				while (tmp != last) {
 					push_back(*tmp);
@@ -86,17 +90,19 @@ namespace ft {
 			}
 
             ~list() {
+				std::cout << "destructor called" << std::endl;
 				this->clear();
-				delete this->_head;
-				delete this->_tail;
+				if (this->_head)
+					delete this->_head;
+				if (this->_tail)
+					delete this->_tail;
             }
 
 			list&		operator=(const list& rhs) {
-				if (*this != rhs) {
-					this->_head = rhs._head;
-					this->_tail = rhs._tail;
-					this->_size = rhs._size;
-				}
+				this->_head = rhs._head;
+				this->_tail = rhs._tail;
+				this->_size = rhs._size;
+				return *this;
 			}
 
 			// Iterators
@@ -259,7 +265,6 @@ namespace ft {
 			}
 
 			iterator erase(iterator first, iterator last) {
-				int i = 1;
 				while(first != last) {
 					first = erase(first);
 				}

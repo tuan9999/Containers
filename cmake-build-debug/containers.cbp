@@ -48,6 +48,7 @@
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/vector"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/map"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/utils"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/queue"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
@@ -73,6 +74,7 @@
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/vector"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/map"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/utils"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/queue"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
@@ -98,6 +100,7 @@
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/vector"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/map"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/utils"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/queue"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
@@ -123,6 +126,7 @@
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/vector"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/map"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/utils"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/queue"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
@@ -150,6 +154,7 @@
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/vector"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/map"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/utils"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/queue"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
@@ -177,6 +182,7 @@
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/vector"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/map"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/utils"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/queue"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
@@ -241,6 +247,9 @@
 			<Option target="_containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/map/rb_tree.h">
+			<Option target="_containers"/>
+		</Unit>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/queue/queue.h">
 			<Option target="_containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/tests/list_tests.cpp">

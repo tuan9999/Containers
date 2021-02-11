@@ -13,9 +13,10 @@ namespace ft {
 	template < class T, class Allocator = std::allocator<T> >
 	class vector {
 	private:
-		T 		*_array;
-		size_t	_size;
-		size_t	_capacity;
+		T 			*_array;
+		size_t		_size;
+		size_t		_capacity;
+		Allocator 	_alloca;
 
 	public:
 		typedef T								value_type;
@@ -37,10 +38,12 @@ namespace ft {
 			this->_array = NULL;
 			this->_size = 0;
 			this->_capacity = 0;
+			this->_alloca = alloc;
 		}
 
 		explicit vector (size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()) {
 			this->_capacity = 0;
+			this->_alloca = alloc;
 			this->reserve(n);
 			while (n > 0) {
 				this->push_back(val);
@@ -53,6 +56,7 @@ namespace ft {
 				typename ft::enable_if<ft::is_iterator<typename InputIterator::iterator_category>::value, T>::type* = NULL) {
 			this->_capacity = 0;
 			this->_array = NULL;
+			this->_alloca = alloc;
 			this->reserve(get_range_length(first, last));
 			while (first != last) {
 				this->push_back(*first);
@@ -64,7 +68,6 @@ namespace ft {
 			this->_capacity = 0;
 			this->_array = NULL;
 			this->reserve(x._capacity);
-			int i = 0;
 			for (const_iterator it = x.begin(); it != x.end(); it++) {
 				this->push_back(*it);
 			}
@@ -77,7 +80,6 @@ namespace ft {
 		vector& operator= (const vector& x) {
 			this->_capacity = x._capacity;
 			this->clear();
-			int i = 0;
 			for (const_iterator it = x.begin(); it != x.end(); it++) {
 				this->push_back(*it);
 			}
@@ -151,7 +153,7 @@ namespace ft {
 				pointer tmp = new value_type[n];
 
 				this->_capacity = n;
-				for (int i = 0; i < this->_size; i++) {
+				for (size_t i = 0; i < this->_size; i++) {
 					tmp[i] = this->_array[i];
 				}
 

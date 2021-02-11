@@ -24,13 +24,31 @@ iostream
 map_node.h
 ../map/map_node.h
 
+../queue/queue.h
+vector.hpp
+../queue/vector.hpp
+
 ../utils/bidirectional_iterator.h
 traits.h
 ../utils/traits.h
 
+../vector/random_access_iterator.hpp
+
+../vector/vector.hpp
+memory
+-
+iostream
+-
+traits.h
+../vector/traits.h
+random_access_iterator.hpp
+../vector/random_access_iterator.hpp
+
 /Users/tuanperera/Documents/42/gh_containers/library.h
 map.h
 /Users/tuanperera/Documents/42/gh_containers/map.h
+queue.h
+/Users/tuanperera/Documents/42/gh_containers/queue.h
 
 /Users/tuanperera/Documents/42/gh_containers/main.cpp
 library.h
