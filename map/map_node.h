@@ -24,31 +24,32 @@ namespace ft {
 		rb_tree_node<T> *right;
 		// 1 for black, 0 for red
 		int				color;
-		value_type 		*data;
+		value_type 		data;
+		bool 			null_node;
 
 	public:
-		rb_tree_node() :
-				parent(NULL),
-				left(NULL),
-				right(NULL),
-				color(BLACK),
-				data(NULL) {}
-
-		rb_tree_node(value_type* v, int color = BLACK) :
+		rb_tree_node(value_type v, int color = BLACK, bool n = false) :
 				parent(NULL),
 				left(NULL),
 				right(NULL),
 				color(color),
-				data(v) {}
+				data(v),
+				null_node(n)
+		{
+		}
 
 		rb_tree_node(const rb_tree_node &src) :
 									parent(src.parent),
 									left(src.left),
 									right(src.right),
 									color(src.color),
-									data(src.data) {}
+									data(src.data),
+									null_node(src.null_node)
+		{
+		}
 
-		~rb_tree_node() {}
+		~rb_tree_node() {
+		}
 
 		self_type &operator=(const self_type &rhs)
 		{
@@ -57,18 +58,19 @@ namespace ft {
 			this->left = rhs.left;
 			this->right = rhs.right;
 			this->color = rhs.color;
+			this->null_node = rhs.null_node;
 			return (*this);
 		}
 
 		node_ptr minimum(node_ptr node) {
-			while (node->left != NULL) {
+			while (node->left->null_node != true) {
 				node = node->left;
 			}
 			return node;
 		}
 
 		node_ptr maximum(node_ptr node) {
-			while (node->right != NULL) {
+			while (node->right->null_node != true) {
 				node = node->right;
 			}
 			return node;
@@ -81,7 +83,7 @@ namespace ft {
 		}
 
 		node_ptr next() {
-			if (this->right) {
+			if (this->right->right != NULL) {
 				return minimum(this->right);
 			}
 			else
@@ -89,7 +91,7 @@ namespace ft {
 		}
 
 		node_ptr prev() {
-			if (this->left)
+			if (this->left->null_node != true)
 				return maximum(this->left);
 			else
 				return inorder_pred_parent(this);

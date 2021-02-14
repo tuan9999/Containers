@@ -26,7 +26,7 @@ namespace ft {
 			list_element<T>							*_head;
 			list_element<T>							*_tail;
 			size_t 									_size;
-			Allocator								allocator;
+			Allocator								_allocator;
 
 		public:
 			typedef T								value_type;
@@ -60,7 +60,7 @@ namespace ft {
 				this->_tail->prev = this->_head;
 				this->_size = 0;
 				this->insert(this->end(), n, val);
-				this->allocator = alloc;
+				this->_allocator = alloc;
 			}
 
 			template <class InputIterator>
@@ -71,7 +71,7 @@ namespace ft {
 				this->_head->next = this->_tail;
 				this->_tail->prev = this->_head;
 				this->_size = 0;
-				this->allocator = alloc;
+				this->_allocator = alloc;
 				InputIterator tmp = first;
 				while (tmp != last) {
 					push_back(*tmp);
@@ -87,6 +87,7 @@ namespace ft {
 				this->_head = src._head;
 				this->_tail = src._tail;
 				this->_size = src._size;
+				this->_allocator = src._allocator;
 			}
 
             ~list() {
@@ -102,6 +103,7 @@ namespace ft {
 				this->_head = rhs._head;
 				this->_tail = rhs._tail;
 				this->_size = rhs._size;
+				this->_allocator = rhs._allocator;
 				return *this;
 			}
 
@@ -173,6 +175,7 @@ namespace ft {
 			void assign (InputIterator first, InputIterator last,
 				typename ft::enable_if<ft::is_iterator<typename InputIterator::iterator_category>::value, T>::type* = NULL) {
 				InputIterator tmp = first;
+				this->clear();
 				while (tmp != last) {
 					push_back(*tmp);
 					tmp++;
@@ -458,7 +461,7 @@ namespace ft {
 
 			// Observers
 			allocator_type get_allocator() const {
-				return this->allocator_type;
+				return this->_allocator;
 			}
 
 		private:

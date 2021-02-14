@@ -15,6 +15,9 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../map"
   "../utils"
   "../queue"
+  "../stack"
+  "../deque"
+  "../pair"
   )
 
 # Targets to which this target links.

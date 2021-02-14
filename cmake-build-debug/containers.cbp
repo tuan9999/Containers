@@ -49,6 +49,9 @@
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/map"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/utils"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/queue"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/stack"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/deque"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/pair"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
@@ -75,6 +78,9 @@
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/map"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/utils"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/queue"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/stack"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/deque"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/pair"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
@@ -101,6 +107,9 @@
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/map"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/utils"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/queue"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/stack"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/deque"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/pair"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
@@ -127,6 +136,9 @@
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/map"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/utils"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/queue"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/stack"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/deque"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/pair"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
@@ -155,6 +167,9 @@
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/map"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/utils"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/queue"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/stack"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/deque"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/pair"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
@@ -183,6 +198,9 @@
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/map"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/utils"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/queue"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/stack"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/deque"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/pair"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
@@ -198,6 +216,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/deque/deque.h">
+			<Option target="_containers"/>
+		</Unit>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/deque/random_access_iterator_deque.h">
+			<Option target="_containers"/>
+		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/iterators/bidirectional_iterator.h">
 			<Option target="_containers"/>
 		</Unit>
@@ -249,7 +273,13 @@
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/map/rb_tree.h">
 			<Option target="_containers"/>
 		</Unit>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/pair/pair.h">
+			<Option target="_containers"/>
+		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/queue/queue.h">
+			<Option target="_containers"/>
+		</Unit>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/stack/stack.h">
 			<Option target="_containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/tests/list_tests.cpp">

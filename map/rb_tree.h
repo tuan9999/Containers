@@ -28,25 +28,15 @@ namespace ft {
 		rb_tree(const rb_tree &src) : root(src.root) {}
 
 		~rb_tree() {
-			node_ptr n = this->root;
+			delete_tree(this->root);
+		}
 
-			while(n) {
-				while (n->left->data)
-					n = n->left;
-				while (n->right->data)
-					n = n->right;
-				if (n->left)
-					delete n->left;
-				if (n->right)
-					delete n->right;
-				if (!n->left && !n->right && n->parent != this->root)
-					n = n->parent;
-				if (n == this->root) {
-					delete n;
-					this->root = NULL;
-					return ;
-				}
-			}
+		void delete_tree(node_ptr node) {
+				if (node->right!=NULL)
+					delete_tree(node->right);
+				if (node->left!=NULL)
+					delete_tree(node->left);
+				delete node;
 		}
 
 		self_type &operator=(const self_type &rhs) {
@@ -61,7 +51,7 @@ namespace ft {
 		node_ptr min_val() {
 			node_ptr node = this->root;
 			if (node) {
-				while (node->left)
+				while (node->left->null_node != true)
 					node = node->left;
 			}
 			return node;
@@ -70,8 +60,18 @@ namespace ft {
 		node_ptr max_val() {
 			node_ptr node = this->root;
 			if (node) {
-				while (node->right)
+				while (node->right->null_node != true)
 					node = node->right;
+			}
+			return node;
+		}
+
+		node_ptr end() {
+			node_ptr node = this->root;
+			if (node) {
+				while (node->right->null_node != true)
+					node = node->right;
+				node = node->right;
 			}
 			return node;
 		}
@@ -80,15 +80,15 @@ namespace ft {
 			node_ptr n = this->root;
 			if (n == NULL)
 				return NULL;
-			else if (k == n->data->first)
+			else if (k == n->data.first)
 				return n;
 			else {
 				while (n) {
-					if (n->data == NULL)
+					if (n->null_node == true)
 						return NULL;
-					else if (k > n->data->first)
+					else if (k > n->data.first)
 						n = n->right;
-					else if (k < n->data->first)
+					else if (k < n->data.first)
 						n = n->left;
 					else
 						return n;
@@ -148,7 +148,7 @@ namespace ft {
 			{
 				std::cout<<"    ";
 			}
-			std::cout << ((p->data) ? p->data->first : 0)  << " " << ((p->color == 1) ? "B" : "R") << std::endl;
+			std::cout << ((p->null_node == false) ? p->data.first : 0)  << " " << ((p->color == 1) ? "B" : "R") << std::endl;
 			if (p->left != NULL)
 			{
 				print(p->left, start);
@@ -199,7 +199,7 @@ namespace ft {
 		}
 
 		node_ptr insert_data(value_type data) {
-			node_ptr node = new rb_tree_node<T>(&data, RED);
+			node_ptr node = new rb_tree_node<T>(data, RED);
 			if (this->root == NULL) {
 				this->root = node;
 				node->color = BLACK;
@@ -207,15 +207,14 @@ namespace ft {
 			else {
 				node_ptr x = this->root;
 				node_ptr y = NULL;
-				while (x && x->data) {
+				while (x && x->null_node != true) {
 					y = x;
-					if (x->data->first == node->data->first) {
-						std::cout << x->data->first << " " << node->data->first << std::endl;
+					if (x->data.first == node->data.first) {
 						std::cout << "Cannot add duplicate key" << std::endl;
 						delete node;
 						return x;
 					}
-					if (x->data->first > node->data->first) {
+					if (x->data.first > node->data.first) {
 						x = x->left;
 					}
 					else {
@@ -224,7 +223,7 @@ namespace ft {
 				}
 				x = node;
 				node->parent = y;
-				if (y->data->first > node->data->first) {
+				if (y->data.first > node->data.first) {
 					if (y->left)
 						delete y->left;
 					y->left = node;
@@ -235,8 +234,8 @@ namespace ft {
 					y->right = node;
 				}
 			}
-			node->right = new rb_tree_node<T>();
-			node->left = new rb_tree_node<T>();
+			node->right = new rb_tree_node<T>(data, BLACK, true);
+			node->left = new rb_tree_node<T>(data, BLACK, true);
 			node->right->parent = node;
 			node->left->parent = node;
 			check_rb_violation(node);
@@ -307,7 +306,7 @@ namespace ft {
 		}
 
 		node_ptr minimum(node_ptr x) {
-			while (x->left->data != NULL) {
+			while (x->left->null_node != true) {
 				x = x->left;
 			}
 			return x;
@@ -326,14 +325,14 @@ namespace ft {
 
 		void delete_node(value_type data) {
 			node_ptr z = NULL;
-			node_ptr x, y, node = this->root;
+			node_ptr x, y, node = this->root, r_tmp = NULL, l_tmp = NULL;
 
 			while (node != NULL){
-				if (node->data && node->data->first == data.first) {
+				if (node->null_node == false && node->data.first == data.first) {
 					z = node;
 				}
 
-				if (node->data && node->data->first <= data.first) {
+				if (node->null_node == false && node->data.first <= data.first) {
 					node = node->right;
 				} else {
 					node = node->left;
@@ -344,14 +343,20 @@ namespace ft {
 				std::cout << "Couldn't find key in the tree" << std::endl;
 				return;
 			}
+			if (z->right->right == NULL)
+				r_tmp = z->right;
+			if (z->left->left == NULL)
+				l_tmp = z->left;
 
 			y = z;
 			int y_original_color = y->color;
-			if (z->left->data == NULL) {
+			if (z->left->null_node == true) {
 				x = z->right;
+				delete z->left;
 				rb_transplant(z, z->right);
-			} else if (z->right->data == NULL) {
+			} else if (z->right->null_node == true) {
 				x = z->left;
+				delete z->right;
 				rb_transplant(z, z->left);
 			} else {
 				y = minimum(z->right);
@@ -366,6 +371,7 @@ namespace ft {
 				}
 
 				rb_transplant(z, y);
+				delete y->left;
 				y->left = z->left;
 				y->left->parent = y;
 				y->color = z->color;

@@ -306,7 +306,7 @@ namespace ft {
 
 		// Allocator
 		allocator_type get_allocator() const {
-			return this->allocator_type;
+			return this->_alloca;
 		}
 
 	private:
