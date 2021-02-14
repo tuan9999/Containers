@@ -26,6 +26,7 @@ namespace ft {
 		int				color;
 		value_type 		data;
 		bool 			null_node;
+		bool 			end_node;
 
 	public:
 		rb_tree_node(value_type v, int color = BLACK, bool n = false) :
@@ -34,7 +35,8 @@ namespace ft {
 				right(NULL),
 				color(color),
 				data(v),
-				null_node(n)
+				null_node(n),
+				end_node(false)
 		{
 		}
 
@@ -44,7 +46,8 @@ namespace ft {
 									right(src.right),
 									color(src.color),
 									data(src.data),
-									null_node(src.null_node)
+									null_node(src.null_node),
+									end_node(src.end_node)
 		{
 		}
 
@@ -59,6 +62,7 @@ namespace ft {
 			this->right = rhs.right;
 			this->color = rhs.color;
 			this->null_node = rhs.null_node;
+			this->end_node = rhs.end_node;
 			return (*this);
 		}
 
@@ -83,8 +87,11 @@ namespace ft {
 		}
 
 		node_ptr next() {
-			if (this->right->right != NULL) {
+			if (this->right->null_node != true) {
 				return minimum(this->right);
+			}
+			else if (this->right->end_node == true) {
+				return this->right;
 			}
 			else
 				return this->parent;
@@ -93,6 +100,8 @@ namespace ft {
 		node_ptr prev() {
 			if (this->left->null_node != true)
 				return maximum(this->left);
+			else if (this->left->end_node == true)
+				return this->left;
 			else
 				return inorder_pred_parent(this);
 		}

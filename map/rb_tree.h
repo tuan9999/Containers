@@ -66,16 +66,6 @@ namespace ft {
 			return node;
 		}
 
-		node_ptr end() {
-			node_ptr node = this->root;
-			if (node) {
-				while (node->right->null_node != true)
-					node = node->right;
-				node = node->right;
-			}
-			return node;
-		}
-
 		node_ptr find(key_type k) {
 			node_ptr n = this->root;
 			if (n == NULL)

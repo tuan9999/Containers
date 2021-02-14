@@ -75,9 +75,12 @@ namespace ft {
 //
 //		}
 //
-//		map (const map& x) {
-//
-//		}
+		map (const map& x) {
+			this->tree = x.tree;
+			this->allocator = x.allocator;
+			this->key_cmp = x.key_cmp;
+			this->t_size = x.t_size;
+		}
 
 		~map() {
 			delete this->tree;
@@ -86,8 +89,11 @@ namespace ft {
 		map& operator= (const map& x) {
 			if (*this != x) {
 				this->tree = x.tree;
+				this->allocator = x.allocator;
+				this->key_cmp = x.key_cmp;
 				this->t_size = x.t_size;
 			}
+			return *this;
 		}
 
 		iterator begin() {
@@ -99,11 +105,15 @@ namespace ft {
 		}
 
 		iterator end() {
-			return (iterator(this->tree->max_val()));
+			node_pointer n = this->tree->max_val()->right;
+			n->end_node = true;
+			return (iterator(n));
 		}
 
 		const_iterator end() const {
-			return (const_iterator(this->tree->max_val()));
+			node_pointer n = this->tree->max_val()->right;
+			n->end_node = true;
+			return (const_iterator(n));
 		}
 
 		reverse_iterator rbegin() {
@@ -115,11 +125,15 @@ namespace ft {
 		}
 
 		reverse_iterator rend() {
-			return (reverse_iterator(this->tree->min_val()));
+			node_pointer n = this->tree->min_val()->left;
+			n->end_node = true;
+			return (reverse_iterator(n));
 		}
 
 		const_reverse_iterator rend() const {
-			return (const_reverse_iterator(this->tree->min_val()));
+			node_pointer n = this->tree->min_val()->left;
+			n->end_node = true;
+			return (const_reverse_iterator(n));
 		}
 
 		bool empty() const {
@@ -225,9 +239,9 @@ namespace ft {
 
 		void swap (map& x) {
 			if (*this != x) {
-				bst tmp = this->tree;
-				this->tree = x.tree;
-				x.tree = tmp;
+				map tmp = x;
+				x = *this;
+				*this = tmp;
 			}
 		}
 
@@ -300,7 +314,7 @@ namespace ft {
 //		}
 //
 		allocator_type get_allocator() const {
-			return (allocator);
+			return (this->allocator);
 		}
 
 		void print() {
