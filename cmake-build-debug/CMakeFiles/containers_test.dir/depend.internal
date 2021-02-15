@@ -11,6 +11,8 @@ CMakeFiles/containers_test.dir/main.cpp.o
  ../map/rb_tree.h
  ../pair/pair.h
  ../queue/queue.h
+ ../set/set.h
+ ../set/set_tree.h
  ../stack/stack.h
  ../utils/bidirectional_iterator.h
  ../vector/random_access_iterator.hpp

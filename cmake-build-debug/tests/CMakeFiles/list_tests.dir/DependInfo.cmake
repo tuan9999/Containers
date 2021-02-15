@@ -24,6 +24,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../stack"
   "../deque"
   "../pair"
+  "../set"
   "/usr/local/include"
   )
 

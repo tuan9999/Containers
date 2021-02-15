@@ -6,6 +6,7 @@
 #include <map>
 #include "rb_tree.h"
 #include "pair.h"
+#include "set.h"
 
 void testtree() {
 	ft::rb_tree<int, std::string, std::pair<int, std::string> > bst;
@@ -84,19 +85,19 @@ void test_tree2() {
 
 int main() {
 //	testtree();
-	ft::map<int, std::string> m;
-	ft::pair<int, std::string> v = ft::pair<int, std::string>(10, "one");
-	m.insert(v);
-	v = ft::pair<int, std::string>(15, "two");
-	m.insert(v);
-	m.insert(ft::pair<int, std::string>(5, "two"));
+	ft::set<int> m;
+	m.insert(10);
+	m.insert(15);
+	m.insert(5);
 	m.print();
-	m.insert(ft::pair<int, std::string>(35, "two"));
+	m.insert(35);
 	m.erase(35);
 	std::cout << (m.count(80)) << std::endl;
 	m.print();
-	for (ft::map<int, std::string>::iterator it = m.begin(); it != m.end(); it++)
-		std::cout << it->first << " " << it->second << std::endl;
+	for (ft::set<int>::iterator it = m.begin(); it != m.end(); it++)
+		std::cout << *it << std::endl;
+	ft::pair<ft::set<int>::iterator, ft::set<int>::iterator> its = m.equal_range(12);
+//	std::cout << its.first << " " << its.second << std::endl;
 //	m.insert(ft::pair<int, std::string>(25, "two"));
 //	m.insert(ft::pair<int, std::string>(50, "two"));
 

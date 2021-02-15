@@ -10,6 +10,8 @@ CMakeFiles/containers_test.dir/main.cpp.o: ../map/map_node.h
 CMakeFiles/containers_test.dir/main.cpp.o: ../map/rb_tree.h
 CMakeFiles/containers_test.dir/main.cpp.o: ../pair/pair.h
 CMakeFiles/containers_test.dir/main.cpp.o: ../queue/queue.h
+CMakeFiles/containers_test.dir/main.cpp.o: ../set/set.h
+CMakeFiles/containers_test.dir/main.cpp.o: ../set/set_tree.h
 CMakeFiles/containers_test.dir/main.cpp.o: ../stack/stack.h
 CMakeFiles/containers_test.dir/main.cpp.o: ../utils/bidirectional_iterator.h
 CMakeFiles/containers_test.dir/main.cpp.o: ../vector/random_access_iterator.hpp

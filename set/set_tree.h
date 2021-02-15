@@ -1,42 +1,40 @@
 //
-// Created by Tuan Perera on 29.01.21.
+// Created by Tuan Perera on 15.02.21.
 //
 
-#ifndef CONTAINERS_RB_TREE_H
-#define CONTAINERS_RB_TREE_H
+#ifndef CONTAINERS_SET_TREE_H
+#define CONTAINERS_SET_TREE_H
 #include <iostream>
 #include "map_node.h"
 
 namespace ft {
-	template<typename Key, typename Mapped, typename T>
-	class rb_tree {
+	template<typename T>
+	class set_tree {
 	public:
 		typedef rb_tree_node<T> 			*node_ptr;
-		typedef rb_tree<Key, Mapped, T>		self_type;
+		typedef set_tree<T>					self_type;
 		typedef T							value_type;
 		typedef T							*pointer;
 		typedef T							&reference;
-		typedef Key							key_type;
-		typedef Mapped						mapped_type;
 
 	private:
 		node_ptr root;
 
 	public:
-		rb_tree() : root(NULL) {}
+		set_tree() : root(NULL) {}
 
-		rb_tree(const rb_tree &src) : root(src.root) {}
+		set_tree(const set_tree &src) : root(src.root) {}
 
-		~rb_tree() {
+		~set_tree() {
 			delete_tree(this->root);
 		}
 
 		void delete_tree(node_ptr node) {
-				if (node->right!=NULL)
-					delete_tree(node->right);
-				if (node->left!=NULL)
-					delete_tree(node->left);
-				delete node;
+			if (node->right!=NULL)
+				delete_tree(node->right);
+			if (node->left!=NULL)
+				delete_tree(node->left);
+			delete node;
 		}
 
 		self_type &operator=(const self_type &rhs) {
@@ -66,19 +64,19 @@ namespace ft {
 			return node;
 		}
 
-		node_ptr find(key_type k) {
+		node_ptr find(value_type k) {
 			node_ptr n = this->root;
 			if (n == NULL)
 				return NULL;
-			else if (k == n->data.first)
+			else if (k == n->data)
 				return n;
 			else {
 				while (n) {
 					if (n->null_node == true)
 						return NULL;
-					else if (k > n->data.first)
+					else if (k > n->data)
 						n = n->right;
-					else if (k < n->data.first)
+					else if (k < n->data)
 						n = n->left;
 					else
 						return n;
@@ -87,18 +85,18 @@ namespace ft {
 			return n;
 		}
 
-		node_ptr find_key_after(key_type k) {
+		node_ptr find_key_after(value_type k) {
 			node_ptr n = this->root;
 			node_ptr prev = NULL;
 			if (n == NULL)
 				return NULL;
-			else if (k == n->data.first)
+			else if (k == n->data)
 				return n;
 			else {
 				while (n) {
 					prev = n;
 					n = n->next();
-					if (k > prev->data.first && k < n->data.first)
+					if (k > prev->data && k < n->data)
 						return n;
 				}
 			}
@@ -156,7 +154,7 @@ namespace ft {
 			{
 				std::cout<<"    ";
 			}
-			std::cout << ((p->null_node == false) ? p->data.first : 0)  << " " << ((p->color == 1) ? "B" : "R") << std::endl;
+			std::cout << ((p->null_node == false) ? p->data : 0)  << " " << ((p->color == 1) ? "B" : "R") << std::endl;
 			if (p->left != NULL)
 			{
 				print(p->left, start);
@@ -217,12 +215,12 @@ namespace ft {
 				node_ptr y = NULL;
 				while (x && x->null_node != true) {
 					y = x;
-					if (x->data.first == node->data.first) {
+					if (x->data == node->data) {
 						std::cout << "Cannot add duplicate key" << std::endl;
 						delete node;
 						return x;
 					}
-					if (x->data.first > node->data.first) {
+					if (x->data > node->data) {
 						x = x->left;
 					}
 					else {
@@ -231,7 +229,7 @@ namespace ft {
 				}
 				x = node;
 				node->parent = y;
-				if (y->data.first > node->data.first) {
+				if (y->data > node->data) {
 					if (y->left)
 						delete y->left;
 					y->left = node;
@@ -336,11 +334,11 @@ namespace ft {
 			node_ptr x, y, node = this->root, r_tmp = NULL, l_tmp = NULL;
 
 			while (node != NULL){
-				if (node->null_node == false && node->data.first == data.first) {
+				if (node->null_node == false && node->data == data) {
 					z = node;
 				}
 
-				if (node->null_node == false && node->data.first <= data.first) {
+				if (node->null_node == false && node->data <= data) {
 					node = node->right;
 				} else {
 					node = node->left;
@@ -393,4 +391,4 @@ namespace ft {
 	};
 }
 
-#endif //CONTAINERS_RB_TREE_H
+#endif //CONTAINERS_SET_TREE_H

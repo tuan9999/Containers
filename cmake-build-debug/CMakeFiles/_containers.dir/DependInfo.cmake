@@ -19,6 +19,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../stack"
   "../deque"
   "../pair"
+  "../set"
   )
 
 # Targets to which this target links.

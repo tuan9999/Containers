@@ -44,6 +44,16 @@ map_node.h
 vector.hpp
 ../queue/vector.hpp
 
+../set/set.h
+set_tree.h
+../set/set_tree.h
+
+../set/set_tree.h
+iostream
+-
+map_node.h
+../set/map_node.h
+
 ../stack/stack.h
 vector.hpp
 ../stack/vector.hpp
@@ -91,4 +101,6 @@ rb_tree.h
 /Users/tuanperera/Documents/42/gh_containers/rb_tree.h
 pair.h
 /Users/tuanperera/Documents/42/gh_containers/pair.h
+set.h
+/Users/tuanperera/Documents/42/gh_containers/set.h
 
