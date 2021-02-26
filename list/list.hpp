@@ -50,7 +50,7 @@ namespace ft {
 				this->_head->next = this->_tail;
 				this->_tail->prev = this->_head;
 				this->_size = 0;
-				this->allocator = alloc;
+				this->_allocator = alloc;
 			}
 
 			explicit list (size_t n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()) {
@@ -59,7 +59,7 @@ namespace ft {
 				this->_head->next = this->_tail;
 				this->_tail->prev = this->_head;
 				this->_size = 0;
-				this->insert(this->end(), n, val);
+				this->assign(n, val);
 				this->_allocator = alloc;
 			}
 
@@ -84,14 +84,18 @@ namespace ft {
 			}
 
 			list (const list& src) {
-				this->_head = src._head;
-				this->_tail = src._tail;
-				this->_size = src._size;
+				this->_head = new list_element<T>();
+				this->_tail = new list_element<T>();
+				this->_head->next = this->_tail;
+				this->_tail->prev = this->_head;
+				this->_size = 0;
+				for (typename list<T>::const_iterator it = src.begin(); it != src.end(); it++) {
+					this->push_back(*it);
+				}
 				this->_allocator = src._allocator;
 			}
 
             ~list() {
-				std::cout << "destructor called" << std::endl;
 				this->clear();
 				if (this->_head)
 					delete this->_head;
@@ -278,24 +282,14 @@ namespace ft {
 			}
 
 			void swap (list& x) {
-				list<T> *tmp = new list<T>;
-				tmp->_head = this->_head;
-				tmp->_tail = this->_tail;
-				tmp->_size = this->_size;
-
-				this->_head = x._head;
-				this->_tail = x._tail;
-				this->_size = x._size;
-
-				x._head = tmp->_head;
-				x._tail = tmp->_tail;
-				x._size = tmp->_size;
-				delete tmp;
+				list<T> tmp(x);
+				x = (*this);
+				(*this) = tmp;
 			}
 
 			void resize (size_type n, value_type val = value_type()) {
 				if (n < this->_size) {
-					while (this->size > n)
+					while (this->_size > n)
 						pop_back();
 				}
 				else if (n > this->_size) {
@@ -337,7 +331,7 @@ namespace ft {
 			void remove_if (Predicate pred) {
 				typename ft::list<T>::iterator it;
 				for (it = this->begin(); it != this->end(); it++) {
-					if (pred(*it))
+					if (*it && pred(*it))
 						it = this->erase(it);
 				}
 			}
@@ -346,7 +340,7 @@ namespace ft {
 				typename ft::list<T>::iterator it;
 
 				for (it = this->begin(); it != this->end(); it++) {
-					if (*it == it.pos->prev->data)
+					if (it.pos && *it == it.pos->prev->data)
 						it = this->erase(it);
 				}
 			}
@@ -471,6 +465,9 @@ namespace ft {
 				pos1.pos->data = pos2.pos->data;
 				pos2.pos->data = tmp;
 			}
+
+		template <class I, class Alloc>
+		friend void swap (ft::list<I,Alloc>& x, ft::list<I,Alloc>& y);
 	};
 };
 
@@ -539,21 +536,23 @@ bool operator>= (const ft::list<T,Alloc>& lhs, const ft::list<T,Alloc>& rhs) {
 	return (!(lhs < rhs));
 }
 
-template <class T, class Alloc>
-void swap (ft::list<T,Alloc>& x, ft::list<T,Alloc>& y) {
-	ft::list<T> *tmp = new ft::list<T>;
-	tmp->_head = y->_head;
-	tmp->_tail = y->_tail;
-	tmp->_size = y->_size;
+namespace ft {
+	template <class I, class Alloc>
+	void swap (ft::list<I,Alloc>& x, ft::list<I,Alloc>& y) {
+		ft::list<I> *tmp = new ft::list<I>;
+		tmp->_head = y._head;
+		tmp->_tail = y._tail;
+		tmp->_size = y._size;
 
-	y->_head = x._head;
-	y->_tail = x._tail;
-	y->_size = x._size;
+		y._head = x._head;
+		y._tail = x._tail;
+		y._size = x._size;
 
-	x._head = tmp->_head;
-	x._tail = tmp->_tail;
-	x._size = tmp->_size;
-	delete tmp;
+		x._head = tmp->_head;
+		x._tail = tmp->_tail;
+		x._size = tmp->_size;
+		delete tmp;
+	}
 }
 
 #endif

@@ -76,6 +76,52 @@ CMAKE_BINARY_DIR = /Users/tuanperera/Documents/42/gh_containers/cmake-build-debu
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -131,43 +177,82 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named _containers
+# Target rules for targets named containers
 
 # Build rule for target.
-_containers: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _containers
-.PHONY : _containers
+containers: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 containers
+.PHONY : containers
 
 # fast build rule for target.
-_containers/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/_containers.dir/build.make CMakeFiles/_containers.dir/build
-.PHONY : _containers/fast
+containers/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/containers.dir/build.make CMakeFiles/containers.dir/build
+.PHONY : containers/fast
 
 #=============================================================================
-# Target rules for targets named containers_test
+# Target rules for targets named Google_Tests_run
 
 # Build rule for target.
-containers_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 containers_test
-.PHONY : containers_test
+Google_Tests_run: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Google_Tests_run
+.PHONY : Google_Tests_run
 
 # fast build rule for target.
-containers_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/containers_test.dir/build.make CMakeFiles/containers_test.dir/build
-.PHONY : containers_test/fast
+Google_Tests_run/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/Google_Tests_run.dir/build.make tests/CMakeFiles/Google_Tests_run.dir/build
+.PHONY : Google_Tests_run/fast
 
 #=============================================================================
-# Target rules for targets named list_tests
+# Target rules for targets named gmock
 
 # Build rule for target.
-list_tests: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 list_tests
-.PHONY : list_tests
+gmock: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock
+.PHONY : gmock
 
 # fast build rule for target.
-list_tests/fast:
-	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/list_tests.dir/build.make tests/CMakeFiles/list_tests.dir/build
-.PHONY : list_tests/fast
+gmock/fast:
+	$(MAKE) $(MAKESILENT) -f tests/lib/googlemock/CMakeFiles/gmock.dir/build.make tests/lib/googlemock/CMakeFiles/gmock.dir/build
+.PHONY : gmock/fast
+
+#=============================================================================
+# Target rules for targets named gmock_main
+
+# Build rule for target.
+gmock_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock_main
+.PHONY : gmock_main
+
+# fast build rule for target.
+gmock_main/fast:
+	$(MAKE) $(MAKESILENT) -f tests/lib/googlemock/CMakeFiles/gmock_main.dir/build.make tests/lib/googlemock/CMakeFiles/gmock_main.dir/build
+.PHONY : gmock_main/fast
+
+#=============================================================================
+# Target rules for targets named gtest_main
+
+# Build rule for target.
+gtest_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest_main
+.PHONY : gtest_main
+
+# fast build rule for target.
+gtest_main/fast:
+	$(MAKE) $(MAKESILENT) -f tests/lib/googletest/CMakeFiles/gtest_main.dir/build.make tests/lib/googletest/CMakeFiles/gtest_main.dir/build
+.PHONY : gtest_main/fast
+
+#=============================================================================
+# Target rules for targets named gtest
+
+# Build rule for target.
+gtest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest
+.PHONY : gtest
+
+# fast build rule for target.
+gtest/fast:
+	$(MAKE) $(MAKESILENT) -f tests/lib/googletest/CMakeFiles/gtest.dir/build.make tests/lib/googletest/CMakeFiles/gtest.dir/build
+.PHONY : gtest/fast
 
 library.o: library.cpp.o
 
@@ -175,7 +260,7 @@ library.o: library.cpp.o
 
 # target to build an object file
 library.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/_containers.dir/build.make CMakeFiles/_containers.dir/library.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/containers.dir/build.make CMakeFiles/containers.dir/library.cpp.o
 .PHONY : library.cpp.o
 
 library.i: library.cpp.i
@@ -184,7 +269,7 @@ library.i: library.cpp.i
 
 # target to preprocess a source file
 library.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/_containers.dir/build.make CMakeFiles/_containers.dir/library.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/containers.dir/build.make CMakeFiles/containers.dir/library.cpp.i
 .PHONY : library.cpp.i
 
 library.s: library.cpp.s
@@ -193,7 +278,7 @@ library.s: library.cpp.s
 
 # target to generate assembly for a file
 library.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/_containers.dir/build.make CMakeFiles/_containers.dir/library.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/containers.dir/build.make CMakeFiles/containers.dir/library.cpp.s
 .PHONY : library.cpp.s
 
 main.o: main.cpp.o
@@ -202,7 +287,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/containers_test.dir/build.make CMakeFiles/containers_test.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/containers.dir/build.make CMakeFiles/containers.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -211,7 +296,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/containers_test.dir/build.make CMakeFiles/containers_test.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/containers.dir/build.make CMakeFiles/containers.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -220,35 +305,8 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/containers_test.dir/build.make CMakeFiles/containers_test.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/containers.dir/build.make CMakeFiles/containers.dir/main.cpp.s
 .PHONY : main.cpp.s
-
-tests/list_tests.o: tests/list_tests.cpp.o
-
-.PHONY : tests/list_tests.o
-
-# target to build an object file
-tests/list_tests.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/_containers.dir/build.make CMakeFiles/_containers.dir/tests/list_tests.cpp.o
-.PHONY : tests/list_tests.cpp.o
-
-tests/list_tests.i: tests/list_tests.cpp.i
-
-.PHONY : tests/list_tests.i
-
-# target to preprocess a source file
-tests/list_tests.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/_containers.dir/build.make CMakeFiles/_containers.dir/tests/list_tests.cpp.i
-.PHONY : tests/list_tests.cpp.i
-
-tests/list_tests.s: tests/list_tests.cpp.s
-
-.PHONY : tests/list_tests.s
-
-# target to generate assembly for a file
-tests/list_tests.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/_containers.dir/build.make CMakeFiles/_containers.dir/tests/list_tests.cpp.s
-.PHONY : tests/list_tests.cpp.s
 
 # Help Target
 help:
@@ -257,19 +315,23 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... install"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... _containers"
-	@echo "... containers_test"
-	@echo "... list_tests"
+	@echo "... Google_Tests_run"
+	@echo "... containers"
+	@echo "... gmock"
+	@echo "... gmock_main"
+	@echo "... gtest"
+	@echo "... gtest_main"
 	@echo "... library.o"
 	@echo "... library.i"
 	@echo "... library.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... tests/list_tests.o"
-	@echo "... tests/list_tests.i"
-	@echo "... tests/list_tests.s"
 .PHONY : help
 
 

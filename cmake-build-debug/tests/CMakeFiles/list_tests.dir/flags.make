@@ -4,7 +4,7 @@
 # compile CXX with /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++
 CXX_FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk   -Wall -Werror -Wextra -std=gnu++98
 
-CXX_DEFINES = -DBOOST_ALL_NO_LIB -DBOOST_UNIT_TEST_FRAMEWORK_DYN_LINK
+CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/tuanperera/Documents/42/gh_containers/list -I/Users/tuanperera/Documents/42/gh_containers/vector -I/Users/tuanperera/Documents/42/gh_containers/map -I/Users/tuanperera/Documents/42/gh_containers/utils -I/Users/tuanperera/Documents/42/gh_containers/queue -I/Users/tuanperera/Documents/42/gh_containers/stack -I/Users/tuanperera/Documents/42/gh_containers/deque -I/Users/tuanperera/Documents/42/gh_containers/pair -I/Users/tuanperera/Documents/42/gh_containers/set -isystem /usr/local/include 
+CXX_INCLUDES = -I/Users/tuanperera/Documents/42/gh_containers/list -I/Users/tuanperera/Documents/42/gh_containers/vector -I/Users/tuanperera/Documents/42/gh_containers/map -I/Users/tuanperera/Documents/42/gh_containers/utils -I/Users/tuanperera/Documents/42/gh_containers/queue -I/Users/tuanperera/Documents/42/gh_containers/stack -I/Users/tuanperera/Documents/42/gh_containers/deque -I/Users/tuanperera/Documents/42/gh_containers/pair -I/Users/tuanperera/Documents/42/gh_containers/set -I/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest/include -I/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest 
 

@@ -8,12 +8,6 @@ set(CMAKE_DEPENDS_CHECK_CXX
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
-# Preprocessor definitions for this target.
-set(CMAKE_TARGET_DEFINITIONS_CXX
-  "BOOST_ALL_NO_LIB"
-  "BOOST_UNIT_TEST_FRAMEWORK_DYN_LINK"
-  )
-
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../list"
@@ -25,7 +19,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../deque"
   "../pair"
   "../set"
-  "/usr/local/include"
+  "../tests/lib/googletest/include"
+  "../tests/lib/googletest"
   )
 
 # Targets to which this target links.

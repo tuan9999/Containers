@@ -76,6 +76,52 @@ CMAKE_BINARY_DIR = /Users/tuanperera/Documents/42/gh_containers/cmake-build-debu
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -131,19 +177,19 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-tests/CMakeFiles/list_tests.dir/rule:
-	cd /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/list_tests.dir/rule
-.PHONY : tests/CMakeFiles/list_tests.dir/rule
+tests/CMakeFiles/Google_Tests_run.dir/rule:
+	cd /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/Google_Tests_run.dir/rule
+.PHONY : tests/CMakeFiles/Google_Tests_run.dir/rule
 
 # Convenience name for target.
-list_tests: tests/CMakeFiles/list_tests.dir/rule
+Google_Tests_run: tests/CMakeFiles/Google_Tests_run.dir/rule
 
-.PHONY : list_tests
+.PHONY : Google_Tests_run
 
 # fast build rule for target.
-list_tests/fast:
-	cd /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/list_tests.dir/build.make tests/CMakeFiles/list_tests.dir/build
-.PHONY : list_tests/fast
+Google_Tests_run/fast:
+	cd /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/Google_Tests_run.dir/build.make tests/CMakeFiles/Google_Tests_run.dir/build
+.PHONY : Google_Tests_run/fast
 
 list_tests.o: list_tests.cpp.o
 
@@ -151,7 +197,7 @@ list_tests.o: list_tests.cpp.o
 
 # target to build an object file
 list_tests.cpp.o:
-	cd /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/list_tests.dir/build.make tests/CMakeFiles/list_tests.dir/list_tests.cpp.o
+	cd /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/Google_Tests_run.dir/build.make tests/CMakeFiles/Google_Tests_run.dir/list_tests.cpp.o
 .PHONY : list_tests.cpp.o
 
 list_tests.i: list_tests.cpp.i
@@ -160,7 +206,7 @@ list_tests.i: list_tests.cpp.i
 
 # target to preprocess a source file
 list_tests.cpp.i:
-	cd /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/list_tests.dir/build.make tests/CMakeFiles/list_tests.dir/list_tests.cpp.i
+	cd /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/Google_Tests_run.dir/build.make tests/CMakeFiles/Google_Tests_run.dir/list_tests.cpp.i
 .PHONY : list_tests.cpp.i
 
 list_tests.s: list_tests.cpp.s
@@ -169,8 +215,35 @@ list_tests.s: list_tests.cpp.s
 
 # target to generate assembly for a file
 list_tests.cpp.s:
-	cd /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/list_tests.dir/build.make tests/CMakeFiles/list_tests.dir/list_tests.cpp.s
+	cd /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/Google_Tests_run.dir/build.make tests/CMakeFiles/Google_Tests_run.dir/list_tests.cpp.s
 .PHONY : list_tests.cpp.s
+
+vector_tests.o: vector_tests.cpp.o
+
+.PHONY : vector_tests.o
+
+# target to build an object file
+vector_tests.cpp.o:
+	cd /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/Google_Tests_run.dir/build.make tests/CMakeFiles/Google_Tests_run.dir/vector_tests.cpp.o
+.PHONY : vector_tests.cpp.o
+
+vector_tests.i: vector_tests.cpp.i
+
+.PHONY : vector_tests.i
+
+# target to preprocess a source file
+vector_tests.cpp.i:
+	cd /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/Google_Tests_run.dir/build.make tests/CMakeFiles/Google_Tests_run.dir/vector_tests.cpp.i
+.PHONY : vector_tests.cpp.i
+
+vector_tests.s: vector_tests.cpp.s
+
+.PHONY : vector_tests.s
+
+# target to generate assembly for a file
+vector_tests.cpp.s:
+	cd /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/Google_Tests_run.dir/build.make tests/CMakeFiles/Google_Tests_run.dir/vector_tests.cpp.s
+.PHONY : vector_tests.cpp.s
 
 # Help Target
 help:
@@ -179,11 +252,18 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... install"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... list_tests"
+	@echo "... Google_Tests_run"
 	@echo "... list_tests.o"
 	@echo "... list_tests.i"
 	@echo "... list_tests.s"
+	@echo "... vector_tests.o"
+	@echo "... vector_tests.i"
+	@echo "... vector_tests.s"
 .PHONY : help
 
 

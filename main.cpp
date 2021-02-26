@@ -5,8 +5,6 @@
 #include <vector>
 #include <map>
 #include "rb_tree.h"
-#include "pair.h"
-#include "set.h"
 
 void testtree() {
 	ft::rb_tree<int, std::string, std::pair<int, std::string> > bst;
@@ -85,18 +83,19 @@ void test_tree2() {
 
 int main() {
 //	testtree();
-	ft::set<int> m;
-	m.insert(10);
-	m.insert(15);
-	m.insert(5);
+	ft::multimap<int, std::string> m;
+	m.insert(ft::pair<int, std::string>(10, "a"));
+	m.insert(ft::pair<int, std::string>(10, "b"));
+	m.insert(ft::pair<int, std::string>(15, "c"));
+	m.insert(ft::pair<int, std::string>(5, "d"));
 	m.print();
-	m.insert(35);
-	m.erase(35);
+	m.insert(ft::pair<int, std::string>(35, "e"));
+	m.insert(ft::pair<int, std::string>(35, "f"));
 	std::cout << (m.count(80)) << std::endl;
 	m.print();
-	for (ft::set<int>::iterator it = m.begin(); it != m.end(); it++)
-		std::cout << *it << std::endl;
-	ft::pair<ft::set<int>::iterator, ft::set<int>::iterator> its = m.equal_range(12);
+	for (ft::multimap<int, std::string>::iterator it = m.begin(); it != m.end(); it++)
+		std::cout << it->first << " " << it->second << std::endl;
+	std::cout << "Hello" << std::endl;
 //	std::cout << its.first << " " << its.second << std::endl;
 //	m.insert(ft::pair<int, std::string>(25, "two"));
 //	m.insert(ft::pair<int, std::string>(50, "two"));

@@ -5,13 +5,113 @@
 		<Option title="containers"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\tests\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\usr\local\lib\cmake\Boost-1.75.0\;CMake Files\..\..\..\..\..\usr\local\lib\cmake\boost_headers-1.75.0\;CMake Files\..\..\..\..\..\usr\local\lib\cmake\boost_unit_test_framework-1.75.0\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\tests\;CMake Files\tests\lib\;CMake Files\tests\lib\googlemock\;CMake Files\tests\lib\googlemock\cmake\;CMake Files\tests\lib\googletest\;CMake Files\tests\lib\googletest\cmake\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
 					<Build command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/local">
+				<Option working_dir="/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/strip">
+				<Option working_dir="/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install">
+				<Option working_dir="/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="list_install_components">
+				<Option working_dir="/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="containers">
+				<Option output="/Users/tuanperera/Documents/42/gh_containers/containers" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/tuanperera/Documents/42/gh_containers"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/list"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/vector"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/map"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/utils"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/queue"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/stack"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/deque"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/pair"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/set"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 containers"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="containers/fast">
+				<Option output="/Users/tuanperera/Documents/42/gh_containers/containers" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/tuanperera/Documents/42/gh_containers"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/list"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/vector"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/map"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/utils"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/queue"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/stack"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/deque"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/pair"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/set"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 containers/fast"/>
 					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -37,68 +137,8 @@
 					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="_containers">
-				<Option output="/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/lib_containers.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="2"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/Users/tuanperera/Documents/42/gh_containers/list"/>
-					<Add directory="/Users/tuanperera/Documents/42/gh_containers/vector"/>
-					<Add directory="/Users/tuanperera/Documents/42/gh_containers/map"/>
-					<Add directory="/Users/tuanperera/Documents/42/gh_containers/utils"/>
-					<Add directory="/Users/tuanperera/Documents/42/gh_containers/queue"/>
-					<Add directory="/Users/tuanperera/Documents/42/gh_containers/stack"/>
-					<Add directory="/Users/tuanperera/Documents/42/gh_containers/deque"/>
-					<Add directory="/Users/tuanperera/Documents/42/gh_containers/pair"/>
-					<Add directory="/Users/tuanperera/Documents/42/gh_containers/set"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
-					<Add directory="/System/Library/Frameworks"/>
-					<Add directory="/Library/Frameworks"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 _containers"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="_containers/fast">
-				<Option output="/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/lib_containers.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="2"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/Users/tuanperera/Documents/42/gh_containers/list"/>
-					<Add directory="/Users/tuanperera/Documents/42/gh_containers/vector"/>
-					<Add directory="/Users/tuanperera/Documents/42/gh_containers/map"/>
-					<Add directory="/Users/tuanperera/Documents/42/gh_containers/utils"/>
-					<Add directory="/Users/tuanperera/Documents/42/gh_containers/queue"/>
-					<Add directory="/Users/tuanperera/Documents/42/gh_containers/stack"/>
-					<Add directory="/Users/tuanperera/Documents/42/gh_containers/deque"/>
-					<Add directory="/Users/tuanperera/Documents/42/gh_containers/pair"/>
-					<Add directory="/Users/tuanperera/Documents/42/gh_containers/set"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
-					<Add directory="/System/Library/Frameworks"/>
-					<Add directory="/Library/Frameworks"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 _containers/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="containers_test">
-				<Option output="/Users/tuanperera/Documents/42/gh_containers/containers_test" prefix_auto="0" extension_auto="0"/>
+			<Target title="Google_Tests_run">
+				<Option output="/Users/tuanperera/Documents/42/gh_containers/Google_Tests_run" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/tuanperera/Documents/42/gh_containers"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -113,22 +153,24 @@
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/deque"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/pair"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/set"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest/include"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
 					<Add directory="/System/Library/Frameworks"/>
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 containers_test"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 Google_Tests_run"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="containers_test/fast">
-				<Option output="/Users/tuanperera/Documents/42/gh_containers/containers_test" prefix_auto="0" extension_auto="0"/>
+			<Target title="Google_Tests_run/fast">
+				<Option output="/Users/tuanperera/Documents/42/gh_containers/Google_Tests_run" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/tuanperera/Documents/42/gh_containers"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -143,29 +185,29 @@
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/deque"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/pair"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/set"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest/include"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
 					<Add directory="/System/Library/Frameworks"/>
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 containers_test/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 Google_Tests_run/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="list_tests">
-				<Option output="/Users/tuanperera/Documents/42/gh_containers/tests/list_tests" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/tuanperera/Documents/42/gh_containers/tests"/>
+			<Target title="gmock">
+				<Option output="/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/lib/libgmockd.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googlemock"/>
 				<Option object_output="./"/>
-				<Option type="1"/>
+				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add option="-DBOOST_ALL_NO_LIB"/>
-					<Add option="-DBOOST_UNIT_TEST_FRAMEWORK_DYN_LINK"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/list"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/vector"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/map"/>
@@ -175,29 +217,31 @@
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/deque"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/pair"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/set"/>
-					<Add directory="/usr/local/include"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googlemock/include"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googlemock"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest/include"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
 					<Add directory="/System/Library/Frameworks"/>
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 list_tests"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googlemock/Makefile&quot;  VERBOSE=1 gmock"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googlemock/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="list_tests/fast">
-				<Option output="/Users/tuanperera/Documents/42/gh_containers/tests/list_tests" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/tuanperera/Documents/42/gh_containers/tests"/>
+			<Target title="gmock/fast">
+				<Option output="/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/lib/libgmockd.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googlemock"/>
 				<Option object_output="./"/>
-				<Option type="1"/>
+				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add option="-DBOOST_ALL_NO_LIB"/>
-					<Add option="-DBOOST_UNIT_TEST_FRAMEWORK_DYN_LINK"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/list"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/vector"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/map"/>
@@ -207,105 +251,337 @@
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/deque"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/pair"/>
 					<Add directory="/Users/tuanperera/Documents/42/gh_containers/set"/>
-					<Add directory="/usr/local/include"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googlemock/include"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googlemock"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest/include"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
 					<Add directory="/System/Library/Frameworks"/>
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 list_tests/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googlemock/Makefile&quot;  VERBOSE=1 gmock/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googlemock/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gmock_main">
+				<Option output="/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/lib/libgmock_maind.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googlemock"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/list"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/vector"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/map"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/utils"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/queue"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/stack"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/deque"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/pair"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/set"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googlemock/include"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googlemock"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest/include"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googlemock/Makefile&quot;  VERBOSE=1 gmock_main"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googlemock/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gmock_main/fast">
+				<Option output="/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/lib/libgmock_maind.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googlemock"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/list"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/vector"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/map"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/utils"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/queue"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/stack"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/deque"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/pair"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/set"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googlemock/include"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googlemock"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest/include"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googlemock/Makefile&quot;  VERBOSE=1 gmock_main/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googlemock/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gtest_main">
+				<Option output="/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/lib/libgtest_maind.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googletest"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/list"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/vector"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/map"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/utils"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/queue"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/stack"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/deque"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/pair"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/set"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest/include"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googletest/Makefile&quot;  VERBOSE=1 gtest_main"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gtest_main/fast">
+				<Option output="/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/lib/libgtest_maind.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googletest"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/list"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/vector"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/map"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/utils"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/queue"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/stack"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/deque"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/pair"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/set"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest/include"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googletest/Makefile&quot;  VERBOSE=1 gtest_main/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gtest">
+				<Option output="/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/lib/libgtestd.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googletest"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/list"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/vector"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/map"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/utils"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/queue"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/stack"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/deque"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/pair"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/set"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest/include"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googletest/Makefile&quot;  VERBOSE=1 gtest"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gtest/fast">
+				<Option output="/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/lib/libgtestd.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googletest"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/list"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/vector"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/map"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/utils"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/queue"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/stack"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/deque"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/pair"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/set"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest/include"/>
+					<Add directory="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googletest/Makefile&quot;  VERBOSE=1 gtest/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/tuanperera/Documents/42/gh_containers/cmake-build-debug/tests/lib/googletest/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/deque/deque.h">
-			<Option target="_containers"/>
+			<Option target="containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/deque/random_access_iterator_deque.h">
-			<Option target="_containers"/>
+			<Option target="containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/iterators/bidirectional_iterator.h">
-			<Option target="_containers"/>
+			<Option target="containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/iterators/forward_iterator.h">
-			<Option target="_containers"/>
+			<Option target="containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/iterators/input_iterator.h">
-			<Option target="_containers"/>
+			<Option target="containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/iterators/iterator.h">
-			<Option target="_containers"/>
+			<Option target="containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/iterators/output_iterator.h">
-			<Option target="_containers"/>
+			<Option target="containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/iterators/random_access_iterator.h">
-			<Option target="_containers"/>
+			<Option target="containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/library.cpp">
-			<Option target="_containers"/>
+			<Option target="containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/library.h">
-			<Option target="_containers"/>
+			<Option target="containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/list/list.hpp">
-			<Option target="_containers"/>
+			<Option target="containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/list/list_element.h">
-			<Option target="_containers"/>
+			<Option target="containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/list/list_iterator.h">
-			<Option target="_containers"/>
+			<Option target="containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/list/reverse_list_iterator.h">
-			<Option target="_containers"/>
+			<Option target="containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/list/traits.h">
-			<Option target="_containers"/>
+			<Option target="containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/main.cpp">
-			<Option target="containers_test"/>
+			<Option target="containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/map/map.h">
-			<Option target="_containers"/>
+			<Option target="containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/map/map_node.h">
-			<Option target="_containers"/>
+			<Option target="containers"/>
+		</Unit>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/map/multimap.h">
+			<Option target="containers"/>
+		</Unit>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/map/multimap_node.h">
+			<Option target="containers"/>
+		</Unit>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/map/multimap_tree.h">
+			<Option target="containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/map/rb_tree.h">
-			<Option target="_containers"/>
+			<Option target="containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/pair/pair.h">
-			<Option target="_containers"/>
+			<Option target="containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/queue/queue.h">
-			<Option target="_containers"/>
+			<Option target="containers"/>
+		</Unit>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/set/multiset.h">
+			<Option target="containers"/>
+		</Unit>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/set/multiset_tree.h">
+			<Option target="containers"/>
+		</Unit>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/set/multiset_tree_node.h">
+			<Option target="containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/set/set.h">
-			<Option target="_containers"/>
+			<Option target="containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/set/set_tree.h">
-			<Option target="_containers"/>
+			<Option target="containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/stack/stack.h">
-			<Option target="_containers"/>
+			<Option target="containers"/>
+		</Unit>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googlemock/src/gmock-all.cc">
+			<Option target="gmock"/>
+		</Unit>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googlemock/src/gmock_main.cc">
+			<Option target="gmock_main"/>
+		</Unit>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest/src/gtest-all.cc">
+			<Option target="gtest"/>
+		</Unit>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest/src/gtest_main.cc">
+			<Option target="gtest_main"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/tests/list_tests.cpp">
-			<Option target="_containers"/>
-			<Option target="list_tests"/>
+			<Option target="Google_Tests_run"/>
+		</Unit>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/tests/vector_tests.cpp">
+			<Option target="Google_Tests_run"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/utils/bidirectional_iterator.h">
-			<Option target="_containers"/>
+			<Option target="containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/vector/random_access_iterator.hpp">
-			<Option target="_containers"/>
+			<Option target="containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/vector/vector.hpp">
-			<Option target="_containers"/>
+			<Option target="containers"/>
 		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
@@ -313,38 +589,32 @@
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/tests/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\tests\"/>
 		</Unit>
-		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/../../../../../usr/local/lib/cmake/BoostDetectToolset-1.75.0.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\"/>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/tests/lib/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\lib\"/>
 		</Unit>
-		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/../../../../../usr/local/lib/cmake/Boost-1.75.0/BoostConfig.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\Boost-1.75.0\"/>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googlemock/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\lib\googlemock\"/>
 		</Unit>
-		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/../../../../../usr/local/lib/cmake/Boost-1.75.0/BoostConfigVersion.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\Boost-1.75.0\"/>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googlemock/cmake/gmock.pc.in">
+			<Option virtualFolder="CMake Files\tests\lib\googlemock\cmake\"/>
 		</Unit>
-		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/../../../../../usr/local/lib/cmake/boost_headers-1.75.0/boost_headers-config-version.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\boost_headers-1.75.0\"/>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googlemock/cmake/gmock_main.pc.in">
+			<Option virtualFolder="CMake Files\tests\lib\googlemock\cmake\"/>
 		</Unit>
-		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/../../../../../usr/local/lib/cmake/boost_headers-1.75.0/boost_headers-config.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\boost_headers-1.75.0\"/>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\lib\googletest\"/>
 		</Unit>
-		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/../../../../../usr/local/lib/cmake/boost_unit_test_framework-1.75.0/boost_unit_test_framework-config-version.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\boost_unit_test_framework-1.75.0\"/>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest/cmake/Config.cmake.in">
+			<Option virtualFolder="CMake Files\tests\lib\googletest\cmake\"/>
 		</Unit>
-		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/../../../../../usr/local/lib/cmake/boost_unit_test_framework-1.75.0/boost_unit_test_framework-config.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\boost_unit_test_framework-1.75.0\"/>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest/cmake/gtest.pc.in">
+			<Option virtualFolder="CMake Files\tests\lib\googletest\cmake\"/>
 		</Unit>
-		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/../../../../../usr/local/lib/cmake/boost_unit_test_framework-1.75.0/libboost_unit_test_framework-variant-mt-shared.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\boost_unit_test_framework-1.75.0\"/>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest/cmake/gtest_main.pc.in">
+			<Option virtualFolder="CMake Files\tests\lib\googletest\cmake\"/>
 		</Unit>
-		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/../../../../../usr/local/lib/cmake/boost_unit_test_framework-1.75.0/libboost_unit_test_framework-variant-mt-static.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\boost_unit_test_framework-1.75.0\"/>
-		</Unit>
-		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/../../../../../usr/local/lib/cmake/boost_unit_test_framework-1.75.0/libboost_unit_test_framework-variant-shared.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\boost_unit_test_framework-1.75.0\"/>
-		</Unit>
-		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/../../../../../usr/local/lib/cmake/boost_unit_test_framework-1.75.0/libboost_unit_test_framework-variant-static.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\boost_unit_test_framework-1.75.0\"/>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/tests/lib/googletest/cmake/internal_utils.cmake">
+			<Option virtualFolder="CMake Files\tests\lib\googletest\cmake\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

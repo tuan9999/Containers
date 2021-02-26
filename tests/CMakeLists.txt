@@ -1,17 +1,14 @@
-set(Boost_USE_STATIC_LIBS OFF) #enable dynamic linking
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
+cmake_minimum_required(VERSION 2.8.12)
 
-# search for unit_test_framework
-find_package(Boost REQUIRED COMPONENTS unit_test_framework)
+project(googletest-download)
 
-include_directories(${Boost_INCLUDE_DIR})
+set(CMAKE_CXX_STANDARD 11)
 
-# create a list_tests target from test.cpp
-add_executable(list_tests list_tests.cpp)
+add_subdirectory(lib)
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
-# link Boost libraries to the new target
-target_link_libraries(list_tests ${Boost_LIBRARIES})
+add_executable(Google_Tests_run list_tests.cpp vector_tests.cpp)
+target_link_libraries(Google_Tests_run gtest gtest_main)
 
-# link Boost with code library
-target_link_libraries(list_tests _containers)
+
 

@@ -42,7 +42,9 @@ namespace ft {
 		}
 
 		explicit vector (size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()) {
+			this->_array = NULL;
 			this->_capacity = 0;
+			this->_size = 0;
 			this->_alloca = alloc;
 			this->reserve(n);
 			while (n > 0) {
@@ -55,6 +57,7 @@ namespace ft {
 		vector (InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(),
 				typename ft::enable_if<ft::is_iterator<typename InputIterator::iterator_category>::value, T>::type* = NULL) {
 			this->_capacity = 0;
+			this->_size = 0;
 			this->_array = NULL;
 			this->_alloca = alloc;
 			this->reserve(get_range_length(first, last));
@@ -66,6 +69,7 @@ namespace ft {
 
 		vector (const vector& x) {
 			this->_capacity = 0;
+			this->_size = 0;
 			this->_array = NULL;
 			this->reserve(x._capacity);
 			for (const_iterator it = x.begin(); it != x.end(); it++) {
@@ -217,7 +221,7 @@ namespace ft {
 			if (n > this->_capacity)
 				reserve(n * 2);
 			this->_size = n;
-			for (int i = 0; i < n; i++) {
+			for (size_t i = 0; i < n; i++) {
 				this->_array[i] = val;
 			}
 		}
@@ -235,28 +239,23 @@ namespace ft {
 		}
 
 		iterator insert(iterator position, const value_type& val) {
-			if (this->_size + 1 > this->_capacity) {
-				reserve((this->_size + 1) * 2);
-			}
-			pointer sub_array = get_sub_array(position);
+			size_t n = get_sub_array_length(position);
 			this->push_back(val);
-			*position = val;
-			iterator it = position + 1;
-			int i = 0;
-			while (it != this->end()) {
-				*it = sub_array[i];
-				it++;
-				i++;
+			iterator it = this->end() - 1;
+			value_type tmp;
+			for (size_type i = 0; i < n && it != this->begin(); i++)
+			{
+				tmp = *it;
+				*it = *(it - 1);
+				*(it - 1) = tmp;
+				it--;
 			}
-			delete[] sub_array;
-			this->pop_back();
-			this->_size++;
 			return position;
 		}
 
 		void insert (iterator position, size_type n, const value_type& val) {
 			while (n != 0) {
-				insert(position, val);
+				position = insert(position, val);
 				n--;
 			}
 		}
@@ -291,11 +290,9 @@ namespace ft {
 		}
 
 		void swap (vector& x) {
-			vector tmp;
-
-			tmp._array = x._array;
-			x._array = this->_array;
-			this->_array = tmp._array;
+			vector tmp(x);
+			x = *this;
+			*this = tmp;
 		}
 
 		void clear() {
@@ -310,17 +307,6 @@ namespace ft {
 		}
 
 	private:
-		pointer get_sub_array(iterator position) {
-			int i = 0;
-			pointer ret = new value_type[get_sub_array_length(position)];
-			while (position != this->end()) {
-				ret[i] = *position;
-				position++;
-				i++;
-			}
-			return ret;
-		}
-
 		size_t get_sub_array_length(iterator position) {
 			size_t i = 0;
 			while (position != this->end()) {
@@ -340,76 +326,74 @@ namespace ft {
 			return i;
 		}
 	};
-}
 
-template <class T, class Alloc>
-bool operator== (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs) {
-	if (lhs.size() == rhs.size()) {
-		typename ft::vector<T, Alloc>::const_iterator lit;
-		typename ft::vector<T, Alloc>::const_iterator rit = rhs.begin();
-		for (lit = lhs.begin(); lit != lhs.end(); lit++) {
-			if (*lit != *rit)
-				return false;
-			rit++;
+	template <class T, class Alloc>
+	bool operator== (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs) {
+		if (lhs.size() == rhs.size()) {
+			typename ft::vector<T, Alloc>::const_iterator lit;
+			typename ft::vector<T, Alloc>::const_iterator rit = rhs.begin();
+			for (lit = lhs.begin(); lit != lhs.end(); lit++) {
+				if (*lit != *rit)
+					return false;
+				rit++;
+			}
 		}
-	}
-	else
-		return false;
-	return true;
-}
-
-template <class T, class Alloc>
-bool operator!= (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs) {
-	if (lhs.size() == rhs.size()) {
-		typename ft::vector<T, Alloc>::const_iterator lit;
-		typename ft::vector<T, Alloc>::const_iterator rit = rhs.begin();
-		for (lit = lhs.begin(); lit != lhs.end(); lit++) {
-			if (*lit != *rit)
-				return true;
-			rit++;
-		}
-	}
-	else
-		return true;
-	return false;
-}
-
-template <class T, class Alloc>
-bool operator<  (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs) {
-	typename ft::vector<T, Alloc>::const_iterator lit = lit.begin();
-	typename ft::vector<T, Alloc>::const_iterator rit = rhs.begin();
-	if (lhs == rhs || lhs.size() > rhs.size())
-		return false;
-	while (lit != lhs.end) {
-		if (*lit > *rit)
+		else
 			return false;
-		lit++;
-		rit++;
+		return true;
 	}
-	return true;
+
+	template <class T, class Alloc>
+	bool operator!= (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs) {
+		if (lhs.size() == rhs.size()) {
+			typename ft::vector<T, Alloc>::const_iterator lit;
+			typename ft::vector<T, Alloc>::const_iterator rit = rhs.begin();
+			for (lit = lhs.begin(); lit != lhs.end(); lit++) {
+				if (*lit != *rit)
+					return true;
+				rit++;
+			}
+		}
+		else
+			return true;
+		return false;
+	}
+
+	template <class T, class Alloc>
+	bool operator<  (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs) {
+		typename ft::vector<T, Alloc>::const_iterator lit = lhs.begin();
+		typename ft::vector<T, Alloc>::const_iterator rit = rhs.begin();
+		if (lhs == rhs || lhs.size() > rhs.size())
+			return false;
+		while (lit != lhs.end()) {
+			if (*lit > *rit)
+				return false;
+			lit++;
+			rit++;
+		}
+		return true;
+	}
+
+	template <class T, class Alloc>
+	bool operator<= (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs) {
+		return (!(lhs > rhs));
+	}
+
+	template <class T, class Alloc>
+	bool operator>  (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs) {
+		return (rhs < lhs);
+	}
+
+	template <class T, class Alloc>
+	bool operator>= (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs) {
+		return (!(lhs < rhs));
+	}
+
+	template <class T, class Alloc>
+	void swap (ft::vector<T,Alloc>& x, ft::vector<T,Alloc>& y) {
+		x.swap(y);
+	}
 }
 
-template <class T, class Alloc>
-bool operator<= (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs) {
-	return (!(lhs > rhs));
-}
-
-template <class T, class Alloc>
-bool operator>  (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs) {
-	return (rhs < lhs);
-}
-
-template <class T, class Alloc>
-bool operator>= (const ft::vector<T,Alloc>& lhs, const ft::vector<T,Alloc>& rhs) {
-	return (!(lhs < rhs));
-}
-
-template <class T, class Alloc>
-void swap (ft::vector<T,Alloc>& x, ft::vector<T,Alloc>& y) {
-	ft::vector<T> tmp;
-	tmp = y;
-	y = x;
-	x = tmp;
-}
 
 #endif //VECTOR_HPP

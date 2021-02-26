@@ -182,8 +182,8 @@ namespace ft {
 				else {
 					n = this->tree->insert_data(*first);
 					this->t_size++;
-					return ;
 				}
+				first++;
 			}
 		}
 
@@ -221,8 +221,8 @@ namespace ft {
 				else {
 					this->tree->delete_node(*first);
 					this->t_size--;
-					return ;
 				}
+				first++;
 			}
 		}
 

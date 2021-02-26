@@ -16,7 +16,31 @@ list_element.h
 list_element.h
 ../deque/list_element.h
 
+../list/list.hpp
+memory
+-
+iostream
+-
+list_element.h
 ../list/list_element.h
+list_iterator.h
+../list/list_iterator.h
+reverse_list_iterator.h
+../list/reverse_list_iterator.h
+traits.h
+../list/traits.h
+
+../list/list_element.h
+
+../list/list_iterator.h
+list_element.h
+../list/list_element.h
+traits.h
+../list/traits.h
+
+../list/reverse_list_iterator.h
+traits.h
+../list/traits.h
 
 ../list/traits.h
 
@@ -32,6 +56,20 @@ pair.h
 stddef.h
 -
 
+../map/multimap.h
+multimap_tree.h
+../map/multimap_tree.h
+
+../map/multimap_node.h
+vector.hpp
+../map/vector.hpp
+stddef.h
+-
+
+../map/multimap_tree.h
+multimap_node.h
+../map/multimap_node.h
+
 ../map/rb_tree.h
 iostream
 -
@@ -43,6 +81,20 @@ map_node.h
 ../queue/queue.h
 vector.hpp
 ../queue/vector.hpp
+
+../set/multiset.h
+multiset_tree.h
+../set/multiset_tree.h
+
+../set/multiset_tree.h
+iostream
+-
+multiset_tree_node.h
+../set/multiset_tree_node.h
+
+../set/multiset_tree_node.h
+stddef.h
+-
 
 ../set/set.h
 set_tree.h
@@ -74,6 +126,12 @@ traits.h
 random_access_iterator.hpp
 ../vector/random_access_iterator.hpp
 
+/Users/tuanperera/Documents/42/gh_containers/library.cpp
+library.h
+/Users/tuanperera/Documents/42/gh_containers/library.h
+iostream
+-
+
 /Users/tuanperera/Documents/42/gh_containers/library.h
 map.h
 /Users/tuanperera/Documents/42/gh_containers/map.h
@@ -83,6 +141,18 @@ stack.h
 /Users/tuanperera/Documents/42/gh_containers/stack.h
 deque.h
 /Users/tuanperera/Documents/42/gh_containers/deque.h
+list.hpp
+/Users/tuanperera/Documents/42/gh_containers/list.hpp
+vector.hpp
+/Users/tuanperera/Documents/42/gh_containers/vector.hpp
+pair.h
+/Users/tuanperera/Documents/42/gh_containers/pair.h
+set.h
+/Users/tuanperera/Documents/42/gh_containers/set.h
+multimap.h
+/Users/tuanperera/Documents/42/gh_containers/multimap.h
+multiset.h
+/Users/tuanperera/Documents/42/gh_containers/multiset.h
 
 /Users/tuanperera/Documents/42/gh_containers/main.cpp
 library.h
@@ -99,8 +169,4 @@ map
 -
 rb_tree.h
 /Users/tuanperera/Documents/42/gh_containers/rb_tree.h
-pair.h
-/Users/tuanperera/Documents/42/gh_containers/pair.h
-set.h
-/Users/tuanperera/Documents/42/gh_containers/set.h
 
