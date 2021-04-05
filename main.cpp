@@ -4,6 +4,7 @@
 #include <list>
 #include <vector>
 #include <map>
+#include <set>
 #include "rb_tree.h"
 
 void testtree() {
@@ -83,19 +84,15 @@ void test_tree2() {
 
 int main() {
 //	testtree();
-	ft::multimap<int, std::string> m;
-	m.insert(ft::pair<int, std::string>(10, "a"));
-	m.insert(ft::pair<int, std::string>(10, "b"));
-	m.insert(ft::pair<int, std::string>(15, "c"));
-	m.insert(ft::pair<int, std::string>(5, "d"));
-	m.print();
-	m.insert(ft::pair<int, std::string>(35, "e"));
-	m.insert(ft::pair<int, std::string>(35, "f"));
-	std::cout << (m.count(80)) << std::endl;
-	m.print();
-	for (ft::multimap<int, std::string>::iterator it = m.begin(); it != m.end(); it++)
-		std::cout << it->first << " " << it->second << std::endl;
-	std::cout << "Hello" << std::endl;
+	ft::set<int> m;
+	std::set<int> s;
+	for (int i = 1; i < 10; i++) {
+//		s.insert(i);
+		m.insert(i);
+		m.print();
+	}
+//	std::cout << (m.count(80)) << std::endl;
+//	m.print();
 //	std::cout << its.first << " " << its.second << std::endl;
 //	m.insert(ft::pair<int, std::string>(25, "two"));
 //	m.insert(ft::pair<int, std::string>(50, "two"));

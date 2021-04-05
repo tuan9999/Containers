@@ -176,10 +176,7 @@ namespace ft {
 			node_pointer n;
 			while (first != last) {
 				n = this->tree->find(*first);
-				if (n) {
-					continue ;
-				}
-				else {
+				if(!n) {
 					n = this->tree->insert_data(*first);
 					this->t_size++;
 				}

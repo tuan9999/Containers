@@ -365,7 +365,7 @@ namespace ft {
 		typename ft::vector<T, Alloc>::const_iterator rit = rhs.begin();
 		if (lhs == rhs || lhs.size() > rhs.size())
 			return false;
-		while (lit != lhs.end()) {
+		while (lit != lhs.end() && rit != rhs.end()) {
 			if (*lit > *rit)
 				return false;
 			lit++;

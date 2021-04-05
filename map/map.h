@@ -54,10 +54,10 @@ namespace ft {
 		key_compare 	key_cmp;
 
 	public:
-		typedef bidirectional_iterator<T, reference, pointer, node_pointer>								iterator;
-		typedef bidirectional_iterator<T, const_reference, const_pointer, const_node_pointer>			const_iterator;
-		typedef reverse_bidirectional_iterator<T, reference, pointer, node_pointer>						reverse_iterator;
-		typedef reverse_bidirectional_iterator<T, const_reference, const_pointer, const_node_pointer>	const_reverse_iterator;
+		typedef bidirectional_iterator<T, reference, pointer, node_pointer>						iterator;
+		typedef bidirectional_iterator<T, const_reference, const_pointer, node_pointer>			const_iterator;
+		typedef reverse_bidirectional_iterator<T, reference, pointer, node_pointer>				reverse_iterator;
+		typedef reverse_bidirectional_iterator<T, const_reference, const_pointer, node_pointer>	const_reverse_iterator;
 
 	public:
 		explicit map (const key_compare& comp = key_compare(),
@@ -69,7 +69,8 @@ namespace ft {
 		}
 
 		template <class InputIterator>
-		map (InputIterator first, InputIterator last,
+		map (InputIterator first,
+	   		 InputIterator last,
 			 const key_compare& comp = key_compare(),
 			 const allocator_type& alloc = allocator_type(),
 			 typename ft::enable_if<ft::is_iterator<typename InputIterator::iterator_category>::value, T>::type* = NULL) {
@@ -81,7 +82,10 @@ namespace ft {
 		}
 
 		map (const map& x) {
-			this->tree = x.tree;
+			this->tree = new bst();
+			for (const_iterator it = x.begin(); it != x.end(); it++) {
+				this->insert(ft::pair<key_type, mapped_type>(it->first, it->second));
+			}
 			this->allocator = x.allocator;
 			this->key_cmp = x.key_cmp;
 			this->t_size = x.t_size;
@@ -92,12 +96,13 @@ namespace ft {
 		}
 
 		map& operator= (const map& x) {
-			if (*this != x) {
-				this->tree = x.tree;
-				this->allocator = x.allocator;
-				this->key_cmp = x.key_cmp;
-				this->t_size = x.t_size;
+			this->tree = new bst();
+			for (const_iterator it = x.begin(); it != x.end(); it++) {
+				this->insert(ft::pair<key_type, mapped_type>(it->first, it->second));
 			}
+			this->allocator = x.allocator;
+			this->key_cmp = x.key_cmp;
+			this->t_size = x.t_size;
 			return *this;
 		}
 
@@ -243,11 +248,9 @@ namespace ft {
 		}
 
 		void swap (map& x) {
-			if (*this != x) {
-				map tmp = x;
-				x = *this;
-				*this = tmp;
-			}
+			map tmp(x);
+			x = *this;
+			*this = tmp;
 		}
 
 		void clear() {
@@ -277,8 +280,8 @@ namespace ft {
 
 		iterator lower_bound (const key_type& k) {
 			node_pointer n = this->tree->find(k);
-			if (n->prev()) {
-				return (iterator(n->prev()));
+			if (n) {
+				return (iterator(n));
 			}
 			else
 				return this->end();
@@ -286,8 +289,8 @@ namespace ft {
 
 		const_iterator lower_bound (const key_type& k) const {
 			node_pointer n = this->tree->find(k);
-			if (n->prev()) {
-				return (const_iterator(n->prev()));
+			if (n) {
+				return (const_iterator(n));
 			}
 			else
 				return this->end();

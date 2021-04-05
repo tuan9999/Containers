@@ -282,9 +282,10 @@ namespace ft {
 			}
 
 			void swap (list& x) {
-				list<T> tmp(x);
-				x = (*this);
-				(*this) = tmp;
+				swapi(this->_head, x._head);
+				swapi(this->_tail, x._tail);
+				swapi(this->_size, x._size);
+				swapi(this->_allocator, x._allocator);
 			}
 
 			void resize (size_type n, value_type val = value_type()) {
@@ -340,7 +341,7 @@ namespace ft {
 				typename ft::list<T>::iterator it;
 
 				for (it = this->begin(); it != this->end(); it++) {
-					if (it.pos && *it == it.pos->prev->data)
+					if (it.pos && it != this->begin() && *it == it.pos->prev->data)
 						it = this->erase(it);
 				}
 			}
@@ -464,6 +465,13 @@ namespace ft {
 				tmp = pos1.pos->data;
 				pos1.pos->data = pos2.pos->data;
 				pos2.pos->data = tmp;
+			}
+
+			template<typename U>
+			void swapi(U& first, U& second) {
+				U tmp = first;
+				first = second;
+				second = tmp;
 			}
 
 		template <class I, class Alloc>

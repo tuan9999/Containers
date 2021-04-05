@@ -30,11 +30,13 @@ namespace ft {
 		}
 
 		void delete_tree(node_ptr node) {
-			if (node->right!=NULL)
-				delete_tree(node->right);
-			if (node->left!=NULL)
-				delete_tree(node->left);
-			delete node;
+			if (node) {
+				if (node->right!=NULL)
+					delete_tree(node->right);
+				if (node->left!=NULL)
+					delete_tree(node->left);
+				delete node;
+			}
 		}
 
 		self_type &operator=(const self_type &rhs) {
@@ -181,6 +183,11 @@ namespace ft {
 							node->parent->color = BLACK;
 							node->parent->parent->color = RED;
 							right_rotate(node);
+						}
+						else {
+							node->parent->color = (node->parent->color == BLACK) ? RED : BLACK;
+							node->parent->parent->color = (node->parent->parent->color == BLACK) ? RED : BLACK;
+							left_rotate(node->parent->parent);
 						}
 					}
 					else if (node->parent == node->parent->parent->left) {

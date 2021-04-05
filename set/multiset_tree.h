@@ -183,6 +183,11 @@ namespace ft {
 							node->parent->parent->color = RED;
 							right_rotate(node);
 						}
+						else {
+							node->parent->color = (node->parent->color == BLACK) ? RED : BLACK;
+							node->parent->parent->color = (node->parent->parent->color == BLACK) ? RED : BLACK;
+							left_rotate(node->parent->parent);
+						}
 					}
 					else if (node->parent == node->parent->parent->left) {
 						node_ptr u = node->parent->parent->right;
@@ -198,6 +203,11 @@ namespace ft {
 							node->parent->color = BLACK;
 							node->parent->parent->color = RED;
 							left_rotate(node);
+						}
+						else {
+							node->parent->color = (node->parent->color == BLACK) ? RED : BLACK;
+							node->parent->parent->color = (node->parent->parent->color == BLACK) ? RED : BLACK;
+							right_rotate(node->parent->parent);
 						}
 					}
 				}

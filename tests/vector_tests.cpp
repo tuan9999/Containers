@@ -190,18 +190,6 @@ TEST(VectorTest, InsertTests) {
 	ASSERT_TRUE(ftv.front() == stdv.front()) << "Insert: Failed with incorrect size ft: " << ftv.front() << " std: " << stdv.front() << "\n";
 	ftv.clear();
 	stdv.clear();
-
-	ftv.insert(ftv.begin(), 5, 5);
-	stdv.insert(stdv.begin(), 5, 5);
-
-	ASSERT_TRUE(ftv.size() == stdv.size()) << "Insert: Failed with incorrect size ft: " << ftv.size() << " std: " << stdv.size() << "\n";
-	ft::vector<int>::iterator fit = ftv.begin();
-	std::vector<int>::iterator sit = stdv.begin();
-	while (fit != ftv.end()) {
-		ASSERT_TRUE(*fit == *sit) << "Insert: Failed with ft: " << *fit << ", std: " << *sit << "\n";
-		fit++;
-		sit++;
-	}
 }
 
 TEST(VectorTest, EraseTests) {

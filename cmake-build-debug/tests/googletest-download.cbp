@@ -361,6 +361,18 @@
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/tests/list_tests.cpp">
 			<Option target="Google_Tests_run"/>
 		</Unit>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/tests/map_tests.cpp">
+			<Option target="Google_Tests_run"/>
+		</Unit>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/tests/queue_tests.cpp">
+			<Option target="Google_Tests_run"/>
+		</Unit>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/tests/set_tests.cpp">
+			<Option target="Google_Tests_run"/>
+		</Unit>
+		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/tests/stack_tests.cpp">
+			<Option target="Google_Tests_run"/>
+		</Unit>
 		<Unit filename="/Users/tuanperera/Documents/42/gh_containers/tests/vector_tests.cpp">
 			<Option target="Google_Tests_run"/>
 		</Unit>

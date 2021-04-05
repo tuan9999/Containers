@@ -61,36 +61,37 @@ namespace ft {
 		template <class U, class Contain>
 		friend bool operator<  (const queue<U,Contain>& lhs, const queue<U,Contain>& rhs);
 	};
+
+	template <class T, class Container>
+	bool operator== (const ft::queue<T,Container>& lhs, const ft::queue<T,Container>& rhs) {
+		return (lhs.contain == rhs.contain);
+	}
+
+	template <class T, class Container>
+	bool operator!= (const ft::queue<T,Container>& lhs, const ft::queue<T,Container>& rhs) {
+		return (!(lhs == rhs));
+	}
+
+	template <class T, class Container>
+	bool operator<  (const ft::queue<T,Container>& lhs, const ft::queue<T,Container>& rhs) {
+		return (lhs.contain < rhs.contain);
+	}
+
+	template <class T, class Container>
+	bool operator<= (const ft::queue<T,Container>& lhs, const ft::queue<T,Container>& rhs) {
+		return (!(lhs > rhs));
+	}
+
+	template <class T, class Container>
+	bool operator>  (const ft::queue<T,Container>& lhs, const ft::queue<T,Container>& rhs) {
+		return (rhs < lhs);
+	}
+
+	template <class T, class Container>
+	bool operator>= (const ft::queue<T,Container>& lhs, const ft::queue<T,Container>& rhs) {
+		return (!(lhs < rhs));
+	}
 }
 
-template <class T, class Container>
-bool operator== (const ft::queue<T,Container>& lhs, const ft::queue<T,Container>& rhs) {
-	return (lhs.container == rhs.container);
-}
-
-template <class T, class Container>
-bool operator!= (const ft::queue<T,Container>& lhs, const ft::queue<T,Container>& rhs) {
-	return (!(lhs == rhs));
-}
-
-template <class T, class Container>
-bool operator<  (const ft::queue<T,Container>& lhs, const ft::queue<T,Container>& rhs) {
-	return (lhs.container < rhs.container);
-}
-
-template <class T, class Container>
-bool operator<= (const ft::queue<T,Container>& lhs, const ft::queue<T,Container>& rhs) {
-	return (!(lhs > rhs));
-}
-
-template <class T, class Container>
-bool operator>  (const ft::queue<T,Container>& lhs, const ft::queue<T,Container>& rhs) {
-	return (rhs < lhs);
-}
-
-template <class T, class Container>
-bool operator>= (const ft::queue<T,Container>& lhs, const ft::queue<T,Container>& rhs) {
-	return (!(lhs < rhs));
-}
 
 #endif //CONTAINERS_QUEUE_H

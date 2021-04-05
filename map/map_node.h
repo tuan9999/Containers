@@ -81,7 +81,7 @@ namespace ft {
 		}
 
 		node_ptr inorder_pred_parent(node_ptr node) {
-			while (node != this->parent->right)
+			while (this->parent && node != this->parent->right)
 				node = this->parent;
 			return node->parent;
 		}

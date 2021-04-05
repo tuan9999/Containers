@@ -442,8 +442,8 @@ multimap.h
 multiset.h
 /Users/tuanperera/Documents/42/gh_containers/multiset.h
 
-/Users/tuanperera/Documents/42/gh_containers/tests/vector_tests.cpp
-vector
+/Users/tuanperera/Documents/42/gh_containers/tests/map_tests.cpp
+map
 -
 gtest/gtest.h
 /Users/tuanperera/Documents/42/gh_containers/tests/gtest/gtest.h

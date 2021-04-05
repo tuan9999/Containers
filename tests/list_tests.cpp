@@ -30,16 +30,6 @@ TEST(ListTest, ConstructorTests) {
 		sit++;
 	}
 
-	ft::list<int> ri1 = ft::list<int>(ri.begin(), ri.end());
-	std::list<int> si1 = std::list<int>(si.begin(), si.end());
-	fit = ri1.begin();
-	sit = si1.begin();
-	while (sit != si.end()) {
-		ASSERT_TRUE(*fit == *sit) << "Range: Failed with ft: " << *fit << ", std: " << *sit << "\n";
-		fit++;
-		sit++;
-	}
-
 	ft::list<int> cri = ft::list<int>(ri);
 	std::list<int> csi = std::list<int>(si);
 	fit = cri.begin();
@@ -249,32 +239,32 @@ TEST(ListTest, EraseTests) {
 	ASSERT_TRUE(fi.size() == si.size()) << "Erase multiple: Failed with ft:" << fi.size() << ", std:" << si.size() << "\n";
 }
 
-//TEST(ListTest, SwapTests) {
-//	ft::list<int> f1, f2;
-//	std::list<int> s1, s2;
-//
-//	for (int i = 0; i < 10; i++) {
-//		f1.push_back(i);
-//		s1.push_back(i);
-//	}
-//
-//	for (int i = 30; i != 40; i++) {
-//		s2.push_back(i);
-//		f2.push_back(i);
-//	}
-//
-//	s1.swap(s2);
-//	f1.swap(f2);
-//
-//	ft::list<int>::iterator 	fit = f1.begin();
-//	std::list<int>::iterator	sit = s1.begin();
-//
-//	while (sit != s1.end()) {
-//		ASSERT_TRUE(*sit == *fit) << "Swap internal: Failed with ft:" << *fit << ", std:" << *sit << "\n";
-//		sit++;
-//		fit++;
-//	}
-//}
+TEST(ListTest, SwapTests) {
+	ft::list<int> f1, f2;
+	std::list<int> s1, s2;
+
+	for (int i = 0; i < 10; i++) {
+		f1.push_back(i);
+		s1.push_back(i);
+	}
+
+	for (int i = 30; i != 40; i++) {
+		s2.push_back(i);
+		f2.push_back(i);
+	}
+
+	s1.swap(s2);
+	f1.swap(f2);
+
+	ft::list<int>::iterator 	fit = f1.begin();
+	std::list<int>::iterator	sit = s1.begin();
+
+	while (fit != f1.end()) {
+		ASSERT_TRUE(*sit == *fit) << "Swap internal: Failed with ft:" << *fit << ", std:" << *sit << "\n";
+		sit++;
+		fit++;
+	}
+}
 
 TEST(ListTest, ResizeTests) {
 	ft::list<int> fi;
@@ -391,28 +381,26 @@ TEST(ListTest, RemoveTests) {
 	}
 }
 
-//TEST(ListTest, UniqueTests) {
-//	ft::list<int> fi;
-//	std::list<int> si;
-//
-//	for (int i = 0; i < 10; i++) {
-//		fi.push_back(i);
-//		fi.push_back(i);
-//		si.push_back(i);
-//		si.push_back(i);
-//	}
-//
-//	fi.unique();
-//	si.unique();
-//
-//	ft::list<int>::iterator 	fit = fi.begin();
-//	std::list<int>::iterator	sit = si.begin();
-//	while (sit != si.end()) {
-//		ASSERT_TRUE(*fit == *sit) << "Unique: Failed with ft:" << *fit << ", std:" << *sit << "\n";
-//		fit++;
-//		sit++;
-//	}
-//}
+TEST(ListTest, UniqueTests) {
+	ft::list<int> fi;
+	std::list<int> si;
+
+	for (int i = 0; i < 10; i++) {
+		fi.push_back(i);
+		si.push_back(i);
+	}
+
+	fi.unique();
+	si.unique();
+
+	ft::list<int>::iterator 	fit = fi.begin();
+	std::list<int>::iterator	sit = si.begin();
+	while (fit != fi.end()) {
+		ASSERT_TRUE(*fit == *sit) << "Unique: Failed with ft:" << *fit << ", std:" << *sit << "\n";
+		fit++;
+		sit++;
+	}
+}
 
 TEST(ListTest, MergeTests) {
 	ft::list<int> f1, f2;
@@ -445,8 +433,8 @@ TEST(ListTest, MergeTests) {
 	for (int i = 0; i < 10; i++) {
 		f1.push_back(i);
 		s1.push_back(i);
-		f2.push_back(i*2);
-		s2.push_back(i*2);
+		f2.push_back(i);
+		s2.push_back(i);
 	}
 
 	f1.merge(f2, comp);
@@ -455,7 +443,7 @@ TEST(ListTest, MergeTests) {
 	fit = f1.begin();
 	sit = s1.begin();
 
-	while (sit != s1.end()) {
+	while (fit != f1.end()) {
 		ASSERT_TRUE(*sit == *fit) << "Merge with compare: Failed with ft:" << *fit << ", std:" << *sit << "\n";
 		sit++;
 		fit++;

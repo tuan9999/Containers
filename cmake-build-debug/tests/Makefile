@@ -218,6 +218,114 @@ list_tests.cpp.s:
 	cd /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/Google_Tests_run.dir/build.make tests/CMakeFiles/Google_Tests_run.dir/list_tests.cpp.s
 .PHONY : list_tests.cpp.s
 
+map_tests.o: map_tests.cpp.o
+
+.PHONY : map_tests.o
+
+# target to build an object file
+map_tests.cpp.o:
+	cd /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/Google_Tests_run.dir/build.make tests/CMakeFiles/Google_Tests_run.dir/map_tests.cpp.o
+.PHONY : map_tests.cpp.o
+
+map_tests.i: map_tests.cpp.i
+
+.PHONY : map_tests.i
+
+# target to preprocess a source file
+map_tests.cpp.i:
+	cd /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/Google_Tests_run.dir/build.make tests/CMakeFiles/Google_Tests_run.dir/map_tests.cpp.i
+.PHONY : map_tests.cpp.i
+
+map_tests.s: map_tests.cpp.s
+
+.PHONY : map_tests.s
+
+# target to generate assembly for a file
+map_tests.cpp.s:
+	cd /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/Google_Tests_run.dir/build.make tests/CMakeFiles/Google_Tests_run.dir/map_tests.cpp.s
+.PHONY : map_tests.cpp.s
+
+queue_tests.o: queue_tests.cpp.o
+
+.PHONY : queue_tests.o
+
+# target to build an object file
+queue_tests.cpp.o:
+	cd /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/Google_Tests_run.dir/build.make tests/CMakeFiles/Google_Tests_run.dir/queue_tests.cpp.o
+.PHONY : queue_tests.cpp.o
+
+queue_tests.i: queue_tests.cpp.i
+
+.PHONY : queue_tests.i
+
+# target to preprocess a source file
+queue_tests.cpp.i:
+	cd /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/Google_Tests_run.dir/build.make tests/CMakeFiles/Google_Tests_run.dir/queue_tests.cpp.i
+.PHONY : queue_tests.cpp.i
+
+queue_tests.s: queue_tests.cpp.s
+
+.PHONY : queue_tests.s
+
+# target to generate assembly for a file
+queue_tests.cpp.s:
+	cd /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/Google_Tests_run.dir/build.make tests/CMakeFiles/Google_Tests_run.dir/queue_tests.cpp.s
+.PHONY : queue_tests.cpp.s
+
+set_tests.o: set_tests.cpp.o
+
+.PHONY : set_tests.o
+
+# target to build an object file
+set_tests.cpp.o:
+	cd /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/Google_Tests_run.dir/build.make tests/CMakeFiles/Google_Tests_run.dir/set_tests.cpp.o
+.PHONY : set_tests.cpp.o
+
+set_tests.i: set_tests.cpp.i
+
+.PHONY : set_tests.i
+
+# target to preprocess a source file
+set_tests.cpp.i:
+	cd /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/Google_Tests_run.dir/build.make tests/CMakeFiles/Google_Tests_run.dir/set_tests.cpp.i
+.PHONY : set_tests.cpp.i
+
+set_tests.s: set_tests.cpp.s
+
+.PHONY : set_tests.s
+
+# target to generate assembly for a file
+set_tests.cpp.s:
+	cd /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/Google_Tests_run.dir/build.make tests/CMakeFiles/Google_Tests_run.dir/set_tests.cpp.s
+.PHONY : set_tests.cpp.s
+
+stack_tests.o: stack_tests.cpp.o
+
+.PHONY : stack_tests.o
+
+# target to build an object file
+stack_tests.cpp.o:
+	cd /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/Google_Tests_run.dir/build.make tests/CMakeFiles/Google_Tests_run.dir/stack_tests.cpp.o
+.PHONY : stack_tests.cpp.o
+
+stack_tests.i: stack_tests.cpp.i
+
+.PHONY : stack_tests.i
+
+# target to preprocess a source file
+stack_tests.cpp.i:
+	cd /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/Google_Tests_run.dir/build.make tests/CMakeFiles/Google_Tests_run.dir/stack_tests.cpp.i
+.PHONY : stack_tests.cpp.i
+
+stack_tests.s: stack_tests.cpp.s
+
+.PHONY : stack_tests.s
+
+# target to generate assembly for a file
+stack_tests.cpp.s:
+	cd /Users/tuanperera/Documents/42/gh_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/Google_Tests_run.dir/build.make tests/CMakeFiles/Google_Tests_run.dir/stack_tests.cpp.s
+.PHONY : stack_tests.cpp.s
+
 vector_tests.o: vector_tests.cpp.o
 
 .PHONY : vector_tests.o
@@ -261,6 +369,18 @@ help:
 	@echo "... list_tests.o"
 	@echo "... list_tests.i"
 	@echo "... list_tests.s"
+	@echo "... map_tests.o"
+	@echo "... map_tests.i"
+	@echo "... map_tests.s"
+	@echo "... queue_tests.o"
+	@echo "... queue_tests.i"
+	@echo "... queue_tests.s"
+	@echo "... set_tests.o"
+	@echo "... set_tests.i"
+	@echo "... set_tests.s"
+	@echo "... stack_tests.o"
+	@echo "... stack_tests.i"
+	@echo "... stack_tests.s"
 	@echo "... vector_tests.o"
 	@echo "... vector_tests.i"
 	@echo "... vector_tests.s"
