@@ -11,7 +11,7 @@ My implementation of the standard template library containers:
 - [Deque](https://www.cplusplus.com/reference/deque/deque/)
 
 ## Usage
-Run the following commands:
+Run the following commands starting at the root of the repository:
 1. `mkdir build`
 2. `cd build`
 3. `cmake ..`
