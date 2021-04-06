@@ -5,6 +5,7 @@
 #include <map>
 #include "gtest/gtest.h"
 #include "../library.h"
+#include "pair.h"
 
 TEST(MapTest, ConstructorTests) {
 	std::string str = "Mapped";

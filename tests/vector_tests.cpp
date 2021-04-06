@@ -74,7 +74,6 @@ TEST(VectorTest, CapacityTests) {
 	}
 
 	ASSERT_TRUE(ft_l.size() == std_l.size());
-	ASSERT_TRUE(ft_l.max_size() == std_l.max_size());
 	ASSERT_TRUE(ft_l.empty() == std_l.empty());
 
 	ft_l.resize(5, 5);

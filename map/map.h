@@ -6,7 +6,7 @@
 #define MAP_H
 #include "rb_tree.h"
 #include "../utils/bidirectional_iterator.h"
-#include "pair.h"
+#include "../library.h"
 
 namespace ft {
 	template < class Key,                                   				// map::key_type
@@ -249,7 +249,9 @@ namespace ft {
 
 		void swap (map& x) {
 			map tmp(x);
+			delete x.tree;
 			x = *this;
+			delete this->tree;
 			*this = tmp;
 		}
 

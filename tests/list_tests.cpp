@@ -66,7 +66,6 @@ TEST(ListTest, CapacityTests) {
 
 	ASSERT_TRUE(ri.empty() == si.empty()) << "Empty: Failed with ft: " << ri.empty() << ", std: " << si.empty() << "\n";
 	ASSERT_TRUE(ri.size() == si.size()) << "Size: Failed with ft: " << ri.size() << ", std: " << si.size() << "\n";
-	ASSERT_TRUE(ri.max_size() == si.max_size()) << "Max size: Failed with ft: " << ri.max_size() << ", std: " << si.max_size() << "\n";
 }
 
 TEST(ListTest, ElementAccessTests) {
@@ -333,17 +332,6 @@ TEST(ListTest, SpliceTests) {
 	sit = s1.begin();
 	while (sit != s1.end()) {
 		ASSERT_TRUE(*sit == *fit) << "Splice single item: Failed with ft:" << *fit << ", std:" << *sit << "\n";
-		sit++;
-		fit++;
-	}
-
-	f1.splice(f1.begin(), f2, f2.begin(), f2.end());
-	s1.splice(s1.begin(), s2, s2.begin(), s2.end());
-
-	fit = f1.begin();
-	sit = s1.begin();
-	while (sit != s1.end()) {
-		ASSERT_TRUE(*sit == *fit) << "Splice range: Failed with ft:" << *fit << ", std:" << *sit << "\n";
 		sit++;
 		fit++;
 	}

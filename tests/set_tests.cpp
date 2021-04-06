@@ -114,3 +114,91 @@ TEST(SetTest, EraseTests) {
 		sit++;
 	}
 }
+
+TEST(SetTest, SwapTests) {
+	ft::set<int> fs1;
+	std::set<int> ss1;
+	ft::set<int> fs2;
+	std::set<int> ss2;
+
+	fs1.insert(230);
+	fs1.insert(20);
+
+	ss1.insert(230);
+	ss1.insert(20);
+
+	fs2.insert(11);
+	fs2.insert(14);
+
+	ss2.insert(11);
+	ss2.insert(14);
+
+	fs1.swap(fs2);
+	ss1.swap(ss2);
+
+	ft::set<int>::iterator fit = fs1.begin();
+	std::set<int>::iterator sit = ss1.begin();
+	while (fit != fs1.end()) {
+		ASSERT_TRUE(*fit == *sit) << "Swap: Failed with ft: " << *fit << " std: " << *sit << "\n";
+		fit++;
+		sit++;
+	}
+}
+
+TEST(SetTest, ClearTests) {
+	ft::set<int> fs1;
+	std::set<int> ss1;
+
+	fs1.insert(230);
+	fs1.insert(20);
+
+	ss1.insert(230);
+	ss1.insert(20);
+
+	fs1.clear();
+	ss1.clear();
+
+	ASSERT_TRUE(fs1.size() == ss1.size()) << "Clear: Failed with ft: " << fs1.size() << " std: " << ss1.size() << "\n";
+}
+
+TEST(SetTest, FindTests) {
+	ft::set<int> fs1;
+	std::set<int> ss1;
+
+	fs1.insert(230);
+	fs1.insert(20);
+
+	ss1.insert(230);
+	ss1.insert(20);
+
+
+	ASSERT_TRUE(*(fs1.find(20)) == *(ss1.find(20))) << "Find: Failed with ft: " << *(fs1.find(20)) << " std: " << *(ss1.find(20)) << "\n";
+}
+
+TEST(SetTest, CountTests) {
+	ft::set<int> fs1;
+	std::set<int> ss1;
+
+	fs1.insert(230);
+	fs1.insert(20);
+
+	ss1.insert(230);
+	ss1.insert(20);
+
+
+	ASSERT_TRUE((fs1.count(20)) == (ss1.count(20))) << "Count: Failed with ft: " << (fs1.count(20)) << " std: " << (ss1.count(20)) << "\n";
+}
+
+TEST(SetTest, BoundTests) {
+	ft::set<int> fs1;
+	std::set<int> ss1;
+
+	fs1.insert(230);
+	fs1.insert(20);
+
+	ss1.insert(230);
+	ss1.insert(20);
+
+
+	ASSERT_TRUE(*(fs1.lower_bound(20)) == *(ss1.lower_bound(20))) << "Lower bound: Failed with ft: " << *(fs1.lower_bound(20)) << " std: " << *(ss1.lower_bound(20)) << "\n";
+}

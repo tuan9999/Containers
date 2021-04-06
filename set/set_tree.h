@@ -338,7 +338,7 @@ namespace ft {
 
 		void delete_node(value_type data) {
 			node_ptr z = NULL;
-			node_ptr x, y, node = this->root, r_tmp = NULL, l_tmp = NULL;
+			node_ptr x, y, node = this->root;
 
 			while (node != NULL){
 				if (node->null_node == false && node->data == data) {
@@ -356,10 +356,6 @@ namespace ft {
 				std::cout << "Couldn't find key in the tree" << std::endl;
 				return;
 			}
-			if (z->right->right == NULL)
-				r_tmp = z->right;
-			if (z->left->left == NULL)
-				l_tmp = z->left;
 
 			y = z;
 			int y_original_color = y->color;

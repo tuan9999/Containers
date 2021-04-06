@@ -49,10 +49,10 @@ namespace ft {
 		key_compare 	key_cmp;
 
 	public:
-		typedef bidirectional_iterator<T, reference, pointer, node_pointer>								iterator;
-		typedef bidirectional_iterator<T, const_reference, const_pointer, const_node_pointer>			const_iterator;
-		typedef reverse_bidirectional_iterator<T, reference, pointer, node_pointer>						reverse_iterator;
-		typedef reverse_bidirectional_iterator<T, const_reference, const_pointer, const_node_pointer>	const_reverse_iterator;
+		typedef bidirectional_iterator<T, reference, pointer, node_pointer>						iterator;
+		typedef bidirectional_iterator<T, const_reference, const_pointer, node_pointer>			const_iterator;
+		typedef reverse_bidirectional_iterator<T, reference, pointer, node_pointer>				reverse_iterator;
+		typedef reverse_bidirectional_iterator<T, const_reference, const_pointer, node_pointer>	const_reverse_iterator;
 
 		explicit set (const key_compare& comp = key_compare(),
 					  const allocator_type& alloc = allocator_type()) {
@@ -73,7 +73,10 @@ namespace ft {
 		}
 
 		set (const set& x) {
-			this->tree = x.tree;
+			this->tree = new bst();
+			for (const_iterator it = x.begin(); it != x.end(); it++) {
+				this->insert(*it);
+			}
 			this->t_size = x.t_size;
 			this->allocator = x.allocator;
 			this->key_cmp = x.key_cmp;
@@ -84,12 +87,13 @@ namespace ft {
 		}
 
 		set& operator= (const set& x) {
-			if (*this != x) {
-				this->tree = x.tree;
-				this->t_size = x.t_size;
-				this->allocator = x.allocator;
-				this->key_cmp = x.key_cmp;
+			this->tree = new bst();
+			for (const_iterator it = x.begin(); it != x.end(); it++) {
+				this->insert(*it);
 			}
+			this->t_size = x.t_size;
+			this->allocator = x.allocator;
+			this->key_cmp = x.key_cmp;
 			return *this;
 		}
 
@@ -224,15 +228,16 @@ namespace ft {
 		}
 
 		void swap (set& x) {
-			if (*this != x) {
-				set tmp = x;
-				x = *this;
-				*this = tmp;
-			}
+			set tmp(x);
+			delete x.tree;
+			x = *this;
+			delete this->tree;
+			*this = tmp;
 		}
 
 		void clear() {
-			this->tree->delete_tree(this->tree->get_root());
+			delete this->tree;
+			this->tree = new bst();
 			this->t_size = 0;
 		}
 
