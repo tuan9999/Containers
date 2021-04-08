@@ -48,10 +48,10 @@ namespace ft {
 		key_compare 	key_cmp;
 
 	public:
-		typedef bidirectional_iterator<T, reference, pointer, node_pointer>								iterator;
-		typedef bidirectional_iterator<T, const_reference, const_pointer, const_node_pointer>			const_iterator;
-		typedef reverse_bidirectional_iterator<T, reference, pointer, node_pointer>						reverse_iterator;
-		typedef reverse_bidirectional_iterator<T, const_reference, const_pointer, const_node_pointer>	const_reverse_iterator;
+		typedef bidirectional_iterator<T, reference, pointer, node_pointer>						iterator;
+		typedef bidirectional_iterator<T, const_reference, const_pointer, node_pointer>			const_iterator;
+		typedef reverse_bidirectional_iterator<T, reference, pointer, node_pointer>				reverse_iterator;
+		typedef reverse_bidirectional_iterator<T, const_reference, const_pointer, node_pointer>	const_reverse_iterator;
 
 		explicit multiset (const key_compare& comp = key_compare(),
 						   const allocator_type& alloc = allocator_type()) {
@@ -74,7 +74,10 @@ namespace ft {
 		}
 
 		multiset (const multiset& x) {
-			this->tree = x.tree;
+			this->tree = new bst();
+			for (const_iterator it = x.begin(); it != x.end(); it++) {
+				this->insert(*it);
+			}
 			this->t_size = x.t_size;
 			this->allocator = x.allocator;
 			this->key_cmp = x.key_cmp;
@@ -85,12 +88,13 @@ namespace ft {
 		}
 
 		multiset& operator= (const multiset& x) {
-			if (*this != x) {
-				this->tree = x.tree;
-				this->t_size = x.t_size;
-				this->allocator = x.allocator;
-				this->key_cmp = x.key_cmp;
+			this->tree = new bst();
+			for (const_iterator it = x.begin(); it != x.end(); it++) {
+				this->insert(*it);
 			}
+			this->t_size = x.t_size;
+			this->allocator = x.allocator;
+			this->key_cmp = x.key_cmp;
 			return *this;
 		}
 
@@ -162,9 +166,8 @@ namespace ft {
 		template <class InputIterator>
 		void insert (InputIterator first, InputIterator last,
 					 typename ft::enable_if<ft::is_iterator<typename InputIterator::iterator_category>::value, T>::type* = NULL) {
-			node_pointer n;
 			while (first != last) {
-				n = this->tree->insert_data(*first);
+				this->tree->insert_data(*first);
 				first++;
 				this->t_size++;
 			}
@@ -208,15 +211,16 @@ namespace ft {
 		}
 
 		void swap (multiset& x) {
-			if (*this != x) {
-				multiset tmp = x;
+				multiset tmp(x);
+				delete x.tree;
 				x = *this;
+				delete this->tree;
 				*this = tmp;
-			}
 		}
 
 		void clear() {
-			this->tree->delete_tree(this->tree->get_root());
+			delete this->tree;
+			this->tree = new bst();
 			this->t_size = 0;
 		}
 

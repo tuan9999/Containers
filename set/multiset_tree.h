@@ -31,11 +31,13 @@ namespace ft {
 		}
 
 		void delete_tree(node_ptr node) {
-			if (node->right!=NULL)
-				delete_tree(node->right);
-			if (node->left!=NULL)
-				delete_tree(node->left);
-			delete node;
+			if (node) {
+				if (node->right!=NULL)
+					delete_tree(node->right);
+				if (node->left!=NULL)
+					delete_tree(node->left);
+				delete node;
+			}
 		}
 
 		self_type &operator=(const self_type &rhs) {
@@ -227,6 +229,7 @@ namespace ft {
 				while (x && x->null_node != true) {
 					y = x;
 					if (x->data == node->data) {
+						delete node;
 						x->count++;
 						return x;
 					}
@@ -341,7 +344,7 @@ namespace ft {
 
 		void delete_node(value_type data) {
 			node_ptr z = NULL;
-			node_ptr x, y, node = this->root, r_tmp = NULL, l_tmp = NULL;
+			node_ptr x, y, node = this->root;
 
 			while (node != NULL){
 				if (node->null_node == false && node->data == data) {
@@ -363,10 +366,6 @@ namespace ft {
 				z->count--;
 				return ;
 			}
-			if (z->right->right == NULL)
-				r_tmp = z->right;
-			if (z->left->left == NULL)
-				l_tmp = z->left;
 
 			y = z;
 			int y_original_color = y->color;

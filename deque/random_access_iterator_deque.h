@@ -16,7 +16,7 @@ namespace ft {
 		typedef list_element<T>				*list_pointer;
 		typedef random_access_iterator_tag 	iterator_category;
 
-	private:
+	public:
 		list_pointer 						pos;
 		list_pointer			 			head;
 		list_pointer		 				tail;

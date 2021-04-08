@@ -104,9 +104,14 @@ namespace ft {
             }
 
 			list&		operator=(const list& rhs) {
-				this->_head = rhs._head;
-				this->_tail = rhs._tail;
-				this->_size = rhs._size;
+				this->_head = new list_element<T>();
+				this->_tail = new list_element<T>();
+				this->_head->next = this->_tail;
+				this->_tail->prev = this->_head;
+				this->_size = 0;
+				for (typename list<T>::const_iterator it = rhs.begin(); it != rhs.end(); it++) {
+					this->push_back(*it);
+				}
 				this->_allocator = rhs._allocator;
 				return *this;
 			}

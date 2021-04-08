@@ -20,10 +20,10 @@ namespace ft {
 		typedef T								*pointer;
 		typedef const T							*const_pointer;
 
-		typedef random_access_iterator<T, reference, pointer> 						iterator;
-		typedef random_access_iterator<T, const_reference, const_pointer> 			const_iterator;
-		typedef reverse_random_access_iterator<T, reference, pointer> 				reverse_iterator;
-		typedef reverse_random_access_iterator<T, const_reference, const_pointer> 	const_reverse_iterator;
+		typedef random_access_iterator_deque<T, reference, pointer> 				iterator;
+		typedef random_access_iterator_deque<T, const_reference, pointer> 			const_iterator;
+		typedef reverse_random_access_iterator_deque<T, reference, pointer> 		reverse_iterator;
+		typedef reverse_random_access_iterator_deque<T, const_reference, pointer> 	const_reverse_iterator;
 
 		typedef list_element<T>	*list_pointer;
 
@@ -40,6 +40,7 @@ namespace ft {
 			this->_tail = new list_element<T>;
 			this->_head->next = this->_tail;
 			this->_tail->prev = this->_head;
+			this->_size = 0;
 		}
 
 		explicit deque (size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()) {
@@ -49,7 +50,7 @@ namespace ft {
 			this->_tail->prev = this->_head;
 			this->_size = 0;
 			this->insert(this->end(), n, val);
-			this->allocator = alloc;
+			this->_allocate = alloc;
 		}
 
 		template <class InputIterator>
@@ -60,7 +61,7 @@ namespace ft {
 			this->_head->next = this->_tail;
 			this->_tail->prev = this->_head;
 			this->_size = 0;
-			this->allocator = alloc;
+			this->_allocate = alloc;
 			InputIterator tmp = first;
 			while (tmp != last) {
 				push_back(*tmp);
@@ -73,20 +74,34 @@ namespace ft {
 		}
 
 		deque (const deque& x) {
-			this->_tail = x._tail;
-			this->_head = x._head;
-			this->_size = x._size;
+			this->_head = new list_element<T>();
+			this->_tail = new list_element<T>();
+			this->_head->next = this->_tail;
+			this->_tail->prev = this->_head;
+			this->_size = 0;
+			for (typename deque<T>::const_iterator it = x.begin(); it != x.end(); it++) {
+				this->push_back(*it);
+			}
 			this->_allocate = x._allocate;
 		}
 
 		~deque() {
-
+			this->clear();
+			if (this->_head)
+				delete this->_head;
+			if (this->_tail)
+				delete this->_tail;
 		}
 
 		deque& operator= (const deque& x) {
-			this->_tail = x._tail;
-			this->_head = x._head;
-			this->_size = x._size;
+			this->_head = new list_element<T>();
+			this->_tail = new list_element<T>();
+			this->_head->next = this->_tail;
+			this->_tail->prev = this->_head;
+			this->_size = 0;
+			for (typename deque<T>::const_iterator it = x.begin(); it != x.end(); it++) {
+				this->push_back(*it);
+			}
 			this->_allocate = x._allocate;
 			return *this;
 		}
@@ -108,19 +123,19 @@ namespace ft {
 		}
 
 		reverse_iterator rbegin() {
-			return (iterator(this->_tail->next));
+			return (reverse_iterator(this->_tail->next));
 		}
 
 		const_reverse_iterator rbegin() const {
-			return (const_iterator(this->_tail->next));
+			return (const_reverse_iterator(this->_tail->next));
 		}
 
 		reverse_iterator rend()  {
-			return (iterator(this->_head->prev));
+			return (reverse_iterator(this->_head->prev));
 		}
 
 		const_reverse_iterator rend() const {
-			return (const_iterator(this->_head->prev));
+			return (const_reverse_iterator(this->_head->prev));
 		}
 
 		size_type size() const {
@@ -133,7 +148,7 @@ namespace ft {
 
 		void resize (size_type n, value_type val = value_type()) {
 			if (n < this->_size) {
-				while (this->size > n)
+				while (this->_size > n)
 					pop_back();
 			}
 			else if (n > this->_size) {
@@ -222,7 +237,7 @@ namespace ft {
 
 		void assign (size_type n, const value_type& val) {
 			this->clear();
-			this->insert(this->end(), n, val);
+			this->insert(this->begin(), n, val);
 		}
 
 		void push_back (const value_type& val) {
@@ -312,19 +327,10 @@ namespace ft {
 		}
 
 		void swap (deque& x) {
-			deque<T> *tmp = new deque<T>;
-			tmp->_head = this->_head;
-			tmp->_tail = this->_tail;
-			tmp->_size = this->_size;
-
-			this->_head = x._head;
-			this->_tail = x._tail;
-			this->_size = x._size;
-
-			x._head = tmp->_head;
-			x._tail = tmp->_tail;
-			x._size = tmp->_size;
-			delete tmp;
+			swapi(this->_head, x._head);
+			swapi(this->_tail, x._tail);
+			swapi(this->_size, x._size);
+			swapi(this->_allocate, x._allocate);
 		}
 
 		void clear() {
@@ -334,9 +340,18 @@ namespace ft {
 		allocator_type get_allocator() const {
 			return this->_allocate;
 		}
+
+	private:
+		template<typename U>
+		void swapi(U& first, U& second) {
+			U tmp = first;
+			first = second;
+			second = tmp;
+		}
 	};
 }
 
+// Non-member function overloads
 template <class T, class Alloc>
 bool operator== (const ft::deque<T,Alloc>& lhs, const ft::deque<T,Alloc>& rhs) {
 	if (lhs.size() == rhs.size()) {
@@ -401,21 +416,23 @@ bool operator>= (const ft::deque<T,Alloc>& lhs, const ft::deque<T,Alloc>& rhs) {
 	return (!(lhs < rhs));
 }
 
-template <class T, class Alloc>
-void swap (ft::deque<T,Alloc>& x, ft::deque<T,Alloc>& y) {
-	ft::deque<T> *tmp = new ft::deque<T>;
-	tmp->_head = y->_head;
-	tmp->_tail = y->_tail;
-	tmp->_size = y->_size;
+namespace ft {
+	template <class I, class Alloc>
+	void swap (ft::deque<I,Alloc>& x, ft::deque<I,Alloc>& y) {
+		ft::deque<I> *tmp = new ft::deque<I>;
+		tmp->_head = y._head;
+		tmp->_tail = y._tail;
+		tmp->_size = y._size;
 
-	y->_head = x._head;
-	y->_tail = x._tail;
-	y->_size = x._size;
+		y._head = x._head;
+		y._tail = x._tail;
+		y._size = x._size;
 
-	x._head = tmp->_head;
-	x._tail = tmp->_tail;
-	x._size = tmp->_size;
-	delete tmp;
+		x._head = tmp->_head;
+		x._tail = tmp->_tail;
+		x._size = tmp->_size;
+		delete tmp;
+	}
 }
 
 #endif //CONTAINERS_DEQUE_H
