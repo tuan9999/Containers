@@ -6,8 +6,6 @@
 #define CONTAINERS_MULTIMAP_NODE_H
 #include "vector.hpp"
 #include <stddef.h>
-#define RED		0
-#define BLACK	1
 
 namespace ft {
 	template<typename Key, typename Mapped, typename T>
@@ -25,34 +23,22 @@ namespace ft {
 		multimap_tree_node<Key, Mapped, T> *parent;
 		multimap_tree_node<Key, Mapped, T> *left;
 		multimap_tree_node<Key, Mapped, T> *right;
-		// 1 for black, 0 for red
-		int			color;
+
 		value_type	data;
-		bool		null_node;
-		bool		end_node;
-		size_t 		count;
 
 	public:
-		multimap_tree_node(value_type v, int color = BLACK, bool n = false, size_t count = 1) :
+		multimap_tree_node(value_type v) :
 				parent(NULL),
 				left(NULL),
 				right(NULL),
-				color(color),
-				data(v),
-				null_node(n),
-				end_node(false),
-				count(count) {
+				data(v) {
 		}
 
 		multimap_tree_node(const multimap_tree_node &src) :
 				parent(src.parent),
 				left(src.left),
 				right(src.right),
-				color(src.color),
-				data(src.data),
-				null_node(src.null_node),
-				end_node(src.end_node),
-				count(src.count) {
+				data(src.data) {
 		}
 
 		~multimap_tree_node() {
@@ -63,22 +49,18 @@ namespace ft {
 			this->parent = rhs.parent;
 			this->left = rhs.left;
 			this->right = rhs.right;
-			this->color = rhs.color;
-			this->null_node = rhs.null_node;
-			this->end_node = rhs.end_node;
-			this->count = rhs.count;
 			return (*this);
 		}
 
 		node_ptr minimum(node_ptr node) {
-			while (node->left->null_node != true) {
+			while (node->left) {
 				node = node->left;
 			}
 			return node;
 		}
 
 		node_ptr maximum(node_ptr node) {
-			while (node->right->null_node != true) {
+			while (node->right) {
 				node = node->right;
 			}
 			return node;
@@ -91,33 +73,15 @@ namespace ft {
 		}
 
 		node_ptr next() {
-			static size_t t_count = 1;
-			if (t_count < this->count) {
-				t_count++;
-				return this;
-			}
-			while (t_count > 1)
-				t_count--;
-			if (this->right->null_node != true) {
+			if (this->right) {
 				return minimum(this->right);
-			} else if (this->right->end_node == true) {
-				return this->right;
 			} else
 				return this->parent;
 		}
 
 		node_ptr prev() {
-			static size_t t_count = 1;
-			if (t_count < this->count) {
-				t_count++;
-				return this;
-			}
-			while (t_count > 1)
-				t_count--;
-			if (this->left->null_node != true)
+			if (this->left)
 				return maximum(this->left);
-			else if (this->left->end_node == true)
-				return this->left;
 			else
 				return inorder_pred_parent(this);
 		}

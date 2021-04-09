@@ -41,7 +41,7 @@ namespace ft {
 			}
 		};
 
-		typedef ft::multimap_tree<Key, T, value_type> 		bst;
+		typedef ft::multimap_tree<Key, T, value_type> 				bst;
 		typedef ft::multimap_tree_node<Key, T, value_type> 			*node_pointer;
 		typedef const ft::multimap_tree_node<Key, T, value_type> 	*const_node_pointer;
 
@@ -52,10 +52,10 @@ namespace ft {
 		key_compare 	key_cmp;
 
 	public:
-		typedef bidirectional_iterator<T, reference, pointer, node_pointer>								iterator;
-		typedef bidirectional_iterator<T, const_reference, const_pointer, const_node_pointer>			const_iterator;
-		typedef reverse_bidirectional_iterator<T, reference, pointer, node_pointer>						reverse_iterator;
-		typedef reverse_bidirectional_iterator<T, const_reference, const_pointer, const_node_pointer>	const_reverse_iterator;
+		typedef bidirectional_iterator<T, reference, pointer, node_pointer>						iterator;
+		typedef bidirectional_iterator<T, const_reference, const_pointer, node_pointer>			const_iterator;
+		typedef reverse_bidirectional_iterator<T, reference, pointer, node_pointer>				reverse_iterator;
+		typedef reverse_bidirectional_iterator<T, const_reference, const_pointer, node_pointer>	const_reverse_iterator;
 
 	public:
 		explicit multimap (const key_compare& comp = key_compare(),
@@ -79,7 +79,10 @@ namespace ft {
 		}
 
 		multimap (const multimap& x) {
-			this->tree = x.tree;
+			this->tree = new bst();
+			for (const_iterator it = x.begin(); it != x.end(); it++) {
+				this->insert(ft::pair<key_type, mapped_type>(it->first, it->second));
+			}
 			this->allocator = x.allocator;
 			this->key_cmp = x.key_cmp;
 			this->t_size = x.t_size;
@@ -90,12 +93,13 @@ namespace ft {
 		}
 
 		multimap& operator= (const multimap& x) {
-			if (*this != x) {
-				this->tree = x.tree;
-				this->allocator = x.allocator;
-				this->key_cmp = x.key_cmp;
-				this->t_size = x.t_size;
+			this->tree = new bst();
+			for (const_iterator it = x.begin(); it != x.end(); it++) {
+				this->insert(ft::pair<key_type, mapped_type>(it->first, it->second));
 			}
+			this->allocator = x.allocator;
+			this->key_cmp = x.key_cmp;
+			this->t_size = x.t_size;
 			return *this;
 		}
 
@@ -109,13 +113,11 @@ namespace ft {
 
 		iterator end() {
 			node_pointer n = this->tree->max_val()->right;
-			n->end_node = true;
 			return (iterator(n));
 		}
 
 		const_iterator end() const {
 			node_pointer n = this->tree->max_val()->right;
-			n->end_node = true;
 			return (const_iterator(n));
 		}
 
@@ -129,13 +131,11 @@ namespace ft {
 
 		reverse_iterator rend() {
 			node_pointer n = this->tree->min_val()->left;
-			n->end_node = true;
 			return (reverse_iterator(n));
 		}
 
 		const_reverse_iterator rend() const {
 			node_pointer n = this->tree->min_val()->left;
-			n->end_node = true;
 			return (const_reverse_iterator(n));
 		}
 
@@ -167,7 +167,6 @@ namespace ft {
 		template <class InputIterator>
 		void insert (InputIterator first, InputIterator last,
 					 typename ft::enable_if<ft::is_iterator<typename InputIterator::iterator_category>::value, T>::type* = NULL) {
-			node_pointer n;
 			while (first != last) {
 				this->tree->insert_data(*first);
 				this->t_size++;
@@ -215,11 +214,11 @@ namespace ft {
 		}
 
 		void swap (multimap& x) {
-			if (*this != x) {
-				multimap tmp = x;
-				x = *this;
-				*this = tmp;
-			}
+			multimap tmp(x);
+			delete x.tree;
+			x = *this;
+			delete this->tree;
+			*this = tmp;
 		}
 
 		void clear() {
