@@ -25,20 +25,26 @@ namespace ft {
 		multimap_tree_node<Key, Mapped, T> *right;
 
 		value_type	data;
+		bool		null_node;
+		bool		end_node;
 
 	public:
-		multimap_tree_node(value_type v) :
+		multimap_tree_node(value_type v, bool n = false) :
 				parent(NULL),
 				left(NULL),
 				right(NULL),
-				data(v) {
+				data(v),
+				null_node(n),
+				end_node(false) {
 		}
 
 		multimap_tree_node(const multimap_tree_node &src) :
 				parent(src.parent),
 				left(src.left),
 				right(src.right),
-				data(src.data) {
+				data(src.data),
+				null_node(src.null_node),
+				end_node(src.end_node) {
 		}
 
 		~multimap_tree_node() {
@@ -49,18 +55,20 @@ namespace ft {
 			this->parent = rhs.parent;
 			this->left = rhs.left;
 			this->right = rhs.right;
+			this->null_node = rhs.null_node;
+			this->end_node = rhs.end_node;
 			return (*this);
 		}
 
 		node_ptr minimum(node_ptr node) {
-			while (node->left) {
+			while (node->left->null_node != true) {
 				node = node->left;
 			}
 			return node;
 		}
 
 		node_ptr maximum(node_ptr node) {
-			while (node->right) {
+			while (node->right->null_node != true) {
 				node = node->right;
 			}
 			return node;
@@ -73,15 +81,19 @@ namespace ft {
 		}
 
 		node_ptr next() {
-			if (this->right) {
+			if (this->right->null_node != true) {
 				return minimum(this->right);
+			} else if (this->right->end_node == true) {
+				return this->right;
 			} else
 				return this->parent;
 		}
 
 		node_ptr prev() {
-			if (this->left)
+			if (this->left->null_node != true)
 				return maximum(this->left);
+			else if (this->left->end_node == true)
+				return this->left;
 			else
 				return inorder_pred_parent(this);
 		}

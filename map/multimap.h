@@ -113,11 +113,13 @@ namespace ft {
 
 		iterator end() {
 			node_pointer n = this->tree->max_val()->right;
+			n->end_node = true;
 			return (iterator(n));
 		}
 
 		const_iterator end() const {
 			node_pointer n = this->tree->max_val()->right;
+			n->end_node = true;
 			return (const_iterator(n));
 		}
 
@@ -131,11 +133,13 @@ namespace ft {
 
 		reverse_iterator rend() {
 			node_pointer n = this->tree->min_val()->left;
+			n->end_node = true;
 			return (reverse_iterator(n));
 		}
 
 		const_reverse_iterator rend() const {
 			node_pointer n = this->tree->min_val()->left;
+			n->end_node = true;
 			return (const_reverse_iterator(n));
 		}
 

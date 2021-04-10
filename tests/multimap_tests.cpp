@@ -10,11 +10,11 @@ TEST(MultiMapTest, ConstructorTests) {
 	std::string str = "multiMapped";
 	ft::multimap<int, std::string> mf1;
 	std::multimap<int, std::string> ms1;
-	mf1.insert(ft::pair<int, std::string>(16, str));
-	ms1.insert(std::pair<int, std::string>(16, str));
-	mf1.insert(ft::pair<int, std::string>(16, str));
-	ms1.insert(std::pair<int, std::string>(16, str));
 
+	mf1.insert(ft::pair<int, std::string>(16, str));
+	ms1.insert(std::pair<int, std::string>(16, str));
+	mf1.insert(ft::pair<int, std::string>(16, str));
+	ms1.insert(std::pair<int, std::string>(16, str));
 	mf1.insert(ft::pair<int, std::string>(23, str));
 	ms1.insert(std::pair<int, std::string>(23, str));
 
@@ -23,6 +23,7 @@ TEST(MultiMapTest, ConstructorTests) {
 	std::multimap<int, std::string> ms2(ms1.begin(), ms1.end());
 	ft::multimap<int, std::string>::iterator itf = mf2.begin();
 	std::multimap<int, std::string>::iterator its = ms2.begin();
+
 	while (itf != mf2.end()) {
 		ASSERT_TRUE((itf->first == its->first) && (itf->second == its->second)) << "Iterator constructor: Failed with ft: " << itf->first << " " << itf->second << " std: " << its->first << " " << its->second << "\n";
 		itf++;
@@ -86,7 +87,6 @@ TEST(MultiMapTest, InsertEraseTests) {
 
 	mf1.insert(ft::pair<int, std::string>(23, str));
 	ms1.insert(std::pair<int, std::string>(23, str));
-
 	ft::multimap<int, std::string> mf2;
 	std::multimap<int, std::string> ms2;
 	mf2.insert(mf1.begin(), mf1.end());

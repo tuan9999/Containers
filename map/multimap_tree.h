@@ -49,8 +49,8 @@ namespace ft {
 
 		node_ptr min_val() {
 			node_ptr node = this->root;
-			if (node) {
-				while (node->left)
+			if (node && node->null_node != true) {
+				while (node->left && node->left->null_node != true)
 					node = node->left;
 			}
 			return node;
@@ -59,7 +59,7 @@ namespace ft {
 		node_ptr max_val() {
 			node_ptr node = this->root;
 			if (node) {
-				while (node->right)
+				while (node->right->null_node != true)
 					node = node->right;
 			}
 			return node;
@@ -73,7 +73,7 @@ namespace ft {
 				return n;
 			else {
 				while (n) {
-					if (!n)
+					if (n->null_node == true)
 						return NULL;
 					else if (k > n->data.first)
 						n = n->right;
@@ -115,7 +115,7 @@ namespace ft {
 			{
 				std::cout<<"    ";
 			}
-			std::cout << p->data.first << std::endl;
+			std::cout << ((p->null_node == false) ? p->data.first : 0)  << std::endl;
 			if (p->left != NULL)
 			{
 				print(p->left, start);
@@ -130,10 +130,10 @@ namespace ft {
 			else {
 				node_ptr x = this->root;
 				node_ptr y = NULL;
-				while (x) {
+				while (x && x->null_node != true) {
 					y = x;
 					if (x->data.first == node->data.first) {
-						if (x->right)
+						if (x->right->null_node != true)
 							node = minimum(x->right);
 						break ;
 					}
@@ -147,17 +147,26 @@ namespace ft {
 				x = node;
 				node->parent = y;
 				if (y->data.first > node->data.first) {
+					if (y->left)
+						delete y->left;
 					y->left = node;
 				}
 				else {
+					if (y->right)
+						delete y->right;
 					y->right = node;
 				}
 			}
+
+			node->right = new multimap_tree_node<Key, Mapped, T>(data, true);
+			node->left = new multimap_tree_node<Key, Mapped, T>(data, true);
+			node->right->parent = node;
+			node->left->parent = node;
 			return (node);
 		}
 
 		node_ptr minimum(node_ptr x) {
-			while (x->left) {
+			while (x->left->null_node != true) {
 				x = x->left;
 			}
 			return x;
@@ -179,14 +188,26 @@ namespace ft {
 					node = node->left;
 				}
 			}
+
 			if (z == NULL) {
 				std::cout << "Couldn't find key in the tree" << std::endl;
 				return;
 			}
-
-			if (z->left or z->right) {
-				if (z->left && z->right) {
+			if (z == this->root) {
+				y = minimum(z->right);
+				y = y->parent;
+				this->root = y;
+				y->right = z->right;
+				y->left = z->left;
+				if (z->right)
+					z->right->parent = y;
+				if (z->left)
+					z->left->parent = y;
+			}
+			else if (z->left->null_node == false or z->right->null_node == false) {
+				if (z->left->null_node == false && z->right->null_node == false) {
 					y = minimum(z->right);
+					y = y->parent;
 					y->parent = z->parent;
 					y->right = z->right;
 					y->left = z->left;
@@ -199,7 +220,7 @@ namespace ft {
 					else
 						z->parent->left = y;
 				}
-				else if (z->left) {
+				else if (z->left->null_node == false) {
 					y = z->left;
 					y->parent = z->parent;
 					if (z == z->parent->right)
@@ -207,7 +228,7 @@ namespace ft {
 					else
 						z->parent->left = y;
 				}
-				else if (z->right) {
+				else if (z->right->null_node == false) {
 					y = z->right;
 					y->parent = z->parent;
 					if (z == z->parent->right)
