@@ -247,7 +247,12 @@ namespace ft {
 		}
 
 		size_type count (const key_type& k) const {
-			return (this->tree->find(k) ? 1 : 0);
+			size_type count = 0;
+			for (const_iterator it = this->begin(); it != this->end(); it++) {
+				if (it->first == k)
+					count++;
+			}
+			return (count);
 		}
 
 		iterator lower_bound (const key_type& k) {

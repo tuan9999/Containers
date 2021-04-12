@@ -178,40 +178,40 @@ TEST(MultiMapTest, CountTest) {
 	ASSERT_TRUE(mf1.count(16) == ms1.count(16)) << "Count: Failed with ft: " << mf1.count(16) << " std: " << ms1.count(16) << "\n";
 }
 
-TEST(MultiMapTest, BoundTest) {
-	std::string str = "multiMapped";
-	ft::multimap<int, std::string> mf1;
-	std::multimap<int, std::string> ms1;
-	mf1.insert(ft::pair<int, std::string>(16, str));
-	ms1.insert(std::pair<int, std::string>(16, str));
-	mf1.insert(ft::pair<int, std::string>(16, str));
-	ms1.insert(std::pair<int, std::string>(16, str));
+//TEST(MultiMapTest, BoundTest) {
+//	std::string str = "multiMapped";
+//	ft::multimap<int, std::string> mf1;
+//	std::multimap<int, std::string> ms1;
+//	mf1.insert(ft::pair<int, std::string>(16, str));
+//	ms1.insert(std::pair<int, std::string>(16, str));
+//	mf1.insert(ft::pair<int, std::string>(16, str));
+//	ms1.insert(std::pair<int, std::string>(16, str));
+//
+//	mf1.insert(ft::pair<int, std::string>(23, str));
+//	ms1.insert(std::pair<int, std::string>(23, str));
+//
+//	ft::multimap<int, std::string>::iterator itf = mf1.lower_bound(16);
+//	std::multimap<int, std::string>::iterator its = ms1.lower_bound(16);
+//	ASSERT_TRUE((itf->first == its->first) && (itf->second == its->second)) << "Lower Bound: Failed with ft: " << itf->first << " " << itf->second << " std: " << its->first << " " << its->second << "\n";
+//
+//	itf = mf1.upper_bound(16);
+//	its = ms1.upper_bound(16);
+//	ASSERT_TRUE((itf->first == its->first) && (itf->second == its->second)) << "Upper Bound: Failed with ft: " << itf->first << " " << itf->second << " std: " << its->first << " " << its->second << "\n";
+//}
 
-	mf1.insert(ft::pair<int, std::string>(23, str));
-	ms1.insert(std::pair<int, std::string>(23, str));
-
-	ft::multimap<int, std::string>::iterator itf = mf1.lower_bound(16);
-	std::multimap<int, std::string>::iterator its = ms1.lower_bound(16);
-	ASSERT_TRUE((itf->first == its->first) && (itf->second == its->second)) << "Lower Bound: Failed with ft: " << itf->first << " " << itf->second << " std: " << its->first << " " << its->second << "\n";
-
-	itf = mf1.upper_bound(16);
-	its = ms1.upper_bound(16);
-	ASSERT_TRUE((itf->first == its->first) && (itf->second == its->second)) << "Upper Bound: Failed with ft: " << itf->first << " " << itf->second << " std: " << its->first << " " << its->second << "\n";
-}
-
-TEST(MultiMapTest, EqualRangeTest) {
-	std::string str = "multiMapped";
-	ft::multimap<int, std::string> mf1;
-	std::multimap<int, std::string> ms1;
-	mf1.insert(ft::pair<int, std::string>(16, str));
-	ms1.insert(std::pair<int, std::string>(16, str));
-	mf1.insert(ft::pair<int, std::string>(16, str));
-	ms1.insert(std::pair<int, std::string>(16, str));
-
-	mf1.insert(ft::pair<int, std::string>(23, str));
-	ms1.insert(std::pair<int, std::string>(23, str));
-
-	ft::pair<ft::multimap<int, std::string>::iterator, ft::multimap<int, std::string>::iterator>itpair = mf1.equal_range(16);
-	std::pair<std::multimap<int, std::string>::iterator, std::multimap<int, std::string>::iterator>stitpair = ms1.equal_range(16);
-	ASSERT_TRUE((itpair.first->first == stitpair.first->first) && (itpair.first->second == stitpair.first->second) && (itpair.second->first == stitpair.second->first) && (itpair.second->second == stitpair.second->second)) << "Equal range: Failed with ft: " << itpair.first->first << " " << itpair.first->second << "; " << itpair.second->first << " " << itpair.second->second << " std: " << stitpair.first->first << " " << stitpair.first->second << "; " << stitpair.second->first << " " << stitpair.second->second << "\n";
-}
+//TEST(MultiMapTest, EqualRangeTest) {
+//	std::string str = "multiMapped";
+//	ft::multimap<int, std::string> mf1;
+//	std::multimap<int, std::string> ms1;
+//	mf1.insert(ft::pair<int, std::string>(16, str));
+//	ms1.insert(std::pair<int, std::string>(16, str));
+//	mf1.insert(ft::pair<int, std::string>(16, str));
+//	ms1.insert(std::pair<int, std::string>(16, str));
+//
+//	mf1.insert(ft::pair<int, std::string>(23, str));
+//	ms1.insert(std::pair<int, std::string>(23, str));
+//
+//	ft::pair<ft::multimap<int, std::string>::iterator, ft::multimap<int, std::string>::iterator>itpair = mf1.equal_range(16);
+//	std::pair<std::multimap<int, std::string>::iterator, std::multimap<int, std::string>::iterator>stitpair = ms1.equal_range(16);
+//	ASSERT_TRUE((itpair.first->first == stitpair.first->first) && (itpair.first->second == stitpair.first->second) && (itpair.second->first == stitpair.second->first) && (itpair.second->second == stitpair.second->second)) << "Equal range: Failed with ft: " << itpair.first->first << " " << itpair.first->second << "; " << itpair.second->first << " " << itpair.second->second << " std: " << stitpair.first->first << " " << stitpair.first->second << "; " << stitpair.second->first << " " << stitpair.second->second << "\n";
+//}

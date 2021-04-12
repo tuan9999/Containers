@@ -49,7 +49,7 @@ namespace ft {
 
 		node_ptr min_val() {
 			node_ptr node = this->root;
-			if (node && node->null_node != true) {
+			if (node && node->null_node != true && node->left && node->left->null_node != true) {
 				while (node->left && node->left->null_node != true)
 					node = node->left;
 			}
@@ -115,7 +115,7 @@ namespace ft {
 			{
 				std::cout<<"    ";
 			}
-			std::cout << ((p->null_node == false) ? p->data.first : 0)  << std::endl;
+			std::cout << ((p->null_node == false) ? p->data.first : 0) << " " <<  ((p->null_node == false) ? p->data.second : "(null)") << std::endl;
 			if (p->left != NULL)
 			{
 				print(p->left, start);
@@ -195,14 +195,9 @@ namespace ft {
 			}
 			if (z == this->root) {
 				y = minimum(z->right);
-				y = y->parent;
-				this->root = y;
-				y->right = z->right;
+				delete y->left;
 				y->left = z->left;
-				if (z->right)
-					z->right->parent = y;
-				if (z->left)
-					z->left->parent = y;
+				this->root = y;
 			}
 			else if (z->left->null_node == false or z->right->null_node == false) {
 				if (z->left->null_node == false && z->right->null_node == false) {
